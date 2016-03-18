@@ -1,0 +1,16 @@
+{
+  "name": "MultiChainNodeServer",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "forever start app.js",
+    "stop": "forever stopall"
+  },
+  "dependencies": {
+    "express": "^4.12.3",
+    "express-session": "^1.11.1",
+    "forever": "0.10.8",
+    "jade": "*",
+    "bluebird": "^3.3.3"
+  }
+}
