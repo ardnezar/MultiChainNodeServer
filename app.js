@@ -11,25 +11,41 @@ var express = require('express')
 
 var app = express();
 
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var methodOverride = require('method-override');
+var bodyParser = require('body-parser');
+var multer = require('multer');
+
+var errorHandler = require('errorhandler');
+
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', 3000);
+//app.set('hostname', '127.0.0.1')
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
+//app.use(favicon);
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+//app.use(logger('dev'));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(multer());
+//app.use(methodOverride);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+  app.use(errorHandler());
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+//app.get('/users', user.list);
+/*app.get('/', function(req, res){
+    res.send('Hello World\n');
+});*/
 
-http.createServer(app).listen(app.get('port'), function(){
+//app.listen();
+
+app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
