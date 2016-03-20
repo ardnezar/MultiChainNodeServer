@@ -3,8 +3,8 @@
  * GET home page.
  */
 
-var commands = require("./lib/commands");
-var simpleClient = require("./lib/client");
+var commands = require("../lib/commands");
+var simpleClient = require("../lib/client");
 
 var connection = {
 	    port: 4784,
