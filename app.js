@@ -40,8 +40,11 @@ if ('development' == app.get('env')) {
 
 var info = require('./routes/getinfo')
 var balance = require('./routes/getaddressbalance')
+var trans = require('./routes/transferasset')
 app.get('/info', info.getinfo);
 app.get('/balance', balance.getaddressbalance);
+app.post('/transfer', trans.transfer);
+
 //app.get('/users', user.list);
 /*app.get('/', function(req, res){
     res.send('Hello World\n');
