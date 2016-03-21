@@ -22,16 +22,19 @@ exports.transfer = function(req, res){
 	var from = headers['from'];
 	var to = headers['to'];
 	var asset = headers['asset-name'];
-	var qty = headers['quantity'];
+	var qty = parseInt(headers['quantity']);
 	
-    console.log("Address in getaddressbalance:"+addr);
+    console.log("Headers in transfer assets:"+JSON.stringify(headers));
     
     if(from === null || to === null || asset === null || qty === null) {
     	res.send("Error in transferring assets.\n");
     } else {
-		var arr = [];
-		arr.push(addr);
-	    client.connect(connection, "getaddressbalances", 
+	    var arr = [];
+	    arr.push(from);
+	    arr.push(to);
+	    arr.push(asset);
+	    arr.push(qty);
+	    client.connect(connection, "sendassetfrom", 
 	    		arr, 
 	                  function (err, resp) {
 			    	if (err) {
@@ -39,7 +42,8 @@ exports.transfer = function(req, res){
 			    		res.send("Error in transferring assets.\n");
 			    	} else {
 			    		console.log("Setting trasfer");
-			    		res.json(resp);
+			    		res.send("You have successfully transferred "+qty+" "+asset+" to "+to+"\n");
+			    	//	res.json(resp);
 			    	}
 	    });
     }
