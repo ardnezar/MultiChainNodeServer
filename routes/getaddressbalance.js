@@ -17,11 +17,15 @@ exports.getaddressbalance = function(req, res){
 //  res.render('index', { title: 'Express' });
 //	res.send('Hello');
 //	var client = simpleClient(connection);
+//var arr = ["1BfLZ1RrC1gmNw9A9TNyiWhHJbtDLfY57KPgwF"];
+var headers = req.headers;
+var addr = headers['address'];
+		    		console.log("Address in getaddressbalance:"+addr);
+var arr = [];
+arr.push(addr);
     client.connect(connection, "getaddressbalances", 
-    		client.getParams({
-	        address: '1BfLZ1RrC1gmNw9A9TNyiWhHJbtDLfY57KPgwF',
-	        minconf: 0
-	    	}), function (err, resp) {
+    		arr, 
+                  function (err, resp) {
 		    	if (err) {
 		    		console.log("Error in getaddressbalance");
 		                res.send("Error in getaddressbalance..code\n");
