@@ -13,7 +13,7 @@ var connection = {
 	    pass: "test"
 	};
 
-exports.index = function(req, res){
+exports.getinfo = function(req, res){
 //  res.render('index', { title: 'Express' });
 //	res.send('Hello');
 //	var client = simpleClient(connection);

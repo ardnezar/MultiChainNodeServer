@@ -13,18 +13,18 @@ var connection = {
 	    pass: "test"
 	};
 
-exports.index = function(req, res){
+exports.getaddressbalance = function(req, res){
 //  res.render('index', { title: 'Express' });
 //	res.send('Hello');
 //	var client = simpleClient(connection);
     client.connect(connection, "getaddressbalances", 
-    		{
+    		client.getParams({
 	        address: '1BfLZ1RrC1gmNw9A9TNyiWhHJbtDLfY57KPgwF',
 	        minconf: 0
-	    	}, function (err, resp) {
+	    	}), function (err, resp) {
 		    	if (err) {
-		    		console.log("Error in getblock");
-		                res.send("Error in getblock..code\n");
+		    		console.log("Error in getaddressbalance");
+		                res.send("Error in getaddressbalance..code\n");
 		    	} else {
 		    		console.log("Getting getblock");
 		    		res.json(resp);

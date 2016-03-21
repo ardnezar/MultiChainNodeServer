@@ -38,8 +38,10 @@ if ('development' == app.get('env')) {
   app.use(errorHandler());
 }
 
-app.get('/info', routes.getinfo);
-app.get('/balance', routes.getaddressbalance);
+var info = require('./routes/getinfo')
+var balance = require('./routes/getaddressbalance')
+app.get('/info', info.getinfo);
+app.get('/balance', balance.getaddressbalance);
 //app.get('/users', user.list);
 /*app.get('/', function(req, res){
     res.send('Hello World\n');
