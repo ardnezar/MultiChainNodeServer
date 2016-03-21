@@ -38,7 +38,8 @@ if ('development' == app.get('env')) {
   app.use(errorHandler());
 }
 
-app.get('/', routes.index);
+app.get('/info', routes.getinfo);
+app.get('/balance', routes.getaddressbalance);
 //app.get('/users', user.list);
 /*app.get('/', function(req, res){
     res.send('Hello World\n');
