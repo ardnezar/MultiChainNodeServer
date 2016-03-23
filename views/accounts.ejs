@@ -16,6 +16,11 @@
         <h1><span class="fa fa-user"></span> Welcome <%= user.local.firstname %></h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
+    
+    <!-- show any messages that come back with authentication -->
+    <% if (!user.local.validated) { %>
+        <div class="alert alert-danger">Account validation in progress. This should take between 12-24 hours. You will have minimal access to your account during this time.</div>
+    <% } %>
 
     <div class="row">
 

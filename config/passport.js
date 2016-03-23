@@ -96,6 +96,7 @@ module.exports = function(passport) {
 	                		newUser.local.address = JSON.stringify(addr);
 	                		newUser.local.firstname = req.param('firstname');
 	                		newUser.local.lastname = req.param('lastname');
+	                		newUser.local.validated = false;
 	    	     
 	    	              // save the user
 	                		newUser.save(function(err) {
