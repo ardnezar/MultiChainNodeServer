@@ -22,8 +22,8 @@
     "mongoose": "^3.8.12",
     "passport": "^0.2.0",
 	"passport-local": "^1.0.0",
-	 "cookie-parser": "^1.0.0",
-	 "ejs" : "^0.8.5",
-	  "bcrypt-nodejs" : "latest"   
+	"cookie-parser": "^1.0.0",
+ 	"ejs" : "^0.8.5",
+  	"bcrypt-nodejs" : "latest"   
   }
 }
