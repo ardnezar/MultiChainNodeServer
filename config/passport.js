@@ -48,23 +48,23 @@ module.exports = function(passport) {
       },
       function(req, username, password, done) {
         findOrCreateUser = function(){
-        	
-        	var addr = req.param('address');
-        	console.log("Signing up user with addr:"+addr);
+//        	
+//        	var addr = req.param('address');
+        	console.log("Signing up user with username:"+username);
 //        	var newUser1 = new User();
 //            // set the user's local credentials
 //            newUser1.local.username = username;
 //            //newUser1.local.password = newUser.generateHash(password);
 //            newUser1.local.address = addr
-            User.findOne({'address':addr},function(err, topuser) {
-    			if (topuser){
-	  	            console.log('This address already exists: '+topuser.username);
-	  	            return done(null, false, 
-	  		                 req.flash('signupMessage','Address already exists.'));
-  	            } else {
-  	            	console.log('This address does not exist');
-  	            }	
-    		});
+//            User.findOne({'address':addr},function(err, topuser) {
+//    			if (topuser){
+//	  	            console.log('This address already exists: '+topuser.username);
+//	  	            return done(null, false, 
+//	  		                 req.flash('signupMessage','Address already exists.'));
+//  	            } else {
+//  	            	console.log('This address does not exist');
+//  	            }	
+//    		});
 	          // find a user in Mongo with provided username
     		User.findOne({'local.username':username},function(err, user) {
 	            if (err){
@@ -79,24 +79,35 @@ module.exports = function(passport) {
 	            } else {
 	              // if there is no user with that email
 	              // create the user
-	              console.log('Creating new user with addr:'+addr);
-	              var newUser = new User();
-	              // set the user's local credentials
-	              newUser.local.username = username;
-	              newUser.local.password = newUser.generateHash(password);
-	              newUser.local.address = addr
-	//              newUser.firstName = req.param('firstName');
-	//              newUser.lastName = req.param('lastName');
-	     
-	              // save the user
-	              newUser.save(function(err) {
-	                if (err){
-	                  console.log('Error in Saving user: '+err);  
-	                  throw err;  
-	                }
-	                console.log('User Registration successful');    
-	                return done(null, newUser);
-	              });
+	            	
+	            	var client = require("../lib/getnewaddress");
+	            	
+	            	client.getNewAddress(function (err, addr) {
+	            		if(err) {
+	            			return done(null, false, 
+	           	                 req.flash('signupMessage','Error in signup. Please try after some time.'));
+	            		} else if(addr) {
+	            			console.log('Creating new user with generated address:'+addr);
+	    	            	var newUser = new User();
+	    	              // set the user's local credentials
+	    	            	newUser.local.username = username;
+	                		newUser.local.password = newUser.generateHash(password);
+	                		newUser.local.address = resp
+	                		newUser.local.firstName = req.param('firstName');
+	                		newUser.local.lastName = req.param('lastName');
+	    	     
+	    	              // save the user
+	                		newUser.save(function(err) {
+	    		                if (err){
+	    		                  console.log('Error in Saving user: '+err);  
+	    		                  return done(null, false, 
+	    		           	                 req.flash('signupMessage','Internal error in signup. Please try after some time.'));
+	    		                }
+	    		                console.log('User Registration successful');    
+	    		                return done(null, newUser);
+	                		});
+	            		}
+	            	});	            		            
 	            }
 	          });
         };
