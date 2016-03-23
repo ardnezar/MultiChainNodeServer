@@ -13,7 +13,7 @@
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <h1><span class="fa fa-user"></span> Welcome <%= user.local.username %></h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
@@ -22,12 +22,12 @@
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-6">
             <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
+                <h3><span class="fa fa-user"></span> Account information</h3>
 
                     <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.username %><br>
-                        <strong>password</strong>: <%= user.local.address %>
+                        <!--<strong>id</strong>: <%= user._id %><br> -->
+                        <strong>Username:</strong>: <%= user.local.username %><br>
+                        <strong>DICoins account number:</strong>: <%= user.local.address %>
                     </p>
 
             </div>
