@@ -48,41 +48,57 @@ module.exports = function(passport) {
       },
       function(req, username, password, done) {
         findOrCreateUser = function(){
-        	console.log("Test1");
-          // find a user in Mongo with provided username
-          User.findOne({'username':username},function(err, user) {
-            if (err){
-              console.log('Error in SignUp: '+err);
-              return done(err);
-            }
-          
-            if (user) {
-              console.log('User already exists');
-              return done(null, false, 
-                 req.flash('message','User Already Exists'));
-            } else {
-              // if there is no user with that email
-              // create the user
-              console.log('Creating new user');
-              var newUser = new User();
-              // set the user's local credentials
-              newUser.local.username = username;
-              newUser.local.password = newUser.generateHash(password);
-//              newUser.email = req.param('email');
-//              newUser.firstName = req.param('firstName');
-//              newUser.lastName = req.param('lastName');
-     
-              // save the user
-              newUser.save(function(err) {
-                if (err){
-                  console.log('Error in Saving user: '+err);  
-                  throw err;  
-                }
-                console.log('User Registration successful');    
-                return done(null, newUser);
-              });
-            }
-          });
+        	
+        	var addr = req.param('address');
+        	console.log("Signing up user with addr:"+addr);
+//        	var newUser1 = new User();
+//            // set the user's local credentials
+//            newUser1.local.username = username;
+//            //newUser1.local.password = newUser.generateHash(password);
+//            newUser1.local.address = addr
+            User.findOne({'address':addr},function(err, topuser) {
+    			if (topuser){
+	  	            console.log('This address already exists: '+topuser.username);
+	  	            return done(null, false, 
+	  		                 req.flash('signupMessage','Address already exists.'));
+  	            } else {
+  	            	console.log('This address does not exist');
+  	            }	
+    		});
+	          // find a user in Mongo with provided username
+    		User.findOne({'local.username':username},function(err, user) {
+	            if (err){
+	              console.log('Error in SignUp: '+err);
+	              return done(err);
+	            }
+	          
+	            if (user) {
+	              console.log('User already exists');
+	              return done(null, false, 
+	                 req.flash('signupMessage','User already exists.'));
+	            } else {
+	              // if there is no user with that email
+	              // create the user
+	              console.log('Creating new user with addr:'+addr);
+	              var newUser = new User();
+	              // set the user's local credentials
+	              newUser.local.username = username;
+	              newUser.local.password = newUser.generateHash(password);
+	              newUser.local.address = addr
+	//              newUser.firstName = req.param('firstName');
+	//              newUser.lastName = req.param('lastName');
+	     
+	              // save the user
+	              newUser.save(function(err) {
+	                if (err){
+	                  console.log('Error in Saving user: '+err);  
+	                  throw err;  
+	                }
+	                console.log('User Registration successful');    
+	                return done(null, newUser);
+	              });
+	            }
+	          });
         };
          
         // Delay the execution of findOrCreateUser and execute 
@@ -105,13 +121,13 @@ module.exports = function(passport) {
             if (!user){
               console.log('User Not Found with username '+username);
               return done(null, false, 
-                    req.flash('message', 'User Not found.'));                 
+                    req.flash('loginMessage', 'User not found.'));                 
             }
             // User exists but wrong password, log the error 
             if (!user.validPassword(password)){
               console.log('Invalid Password');
               return done(null, false, 
-                  req.flash('message', 'Invalid Password'));
+                  req.flash('loginMessage', 'Invalid Password'));
             }
             // User and password both match, return user from 
             // done method which will be treated like success
