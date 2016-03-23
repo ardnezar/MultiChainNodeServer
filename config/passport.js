@@ -88,13 +88,14 @@ module.exports = function(passport) {
 	           	                 req.flash('signupMessage','Error in signup. Please try after some time.'));
 	            		} else if(addr) {
 	            			console.log('Creating new user with generated address:'+addr);
+	            			console.log('Creating new user with firstname:'+req.param('firstname'));
 	    	            	var newUser = new User();
 	    	              // set the user's local credentials
 	    	            	newUser.local.username = username;
 	                		newUser.local.password = newUser.generateHash(password);
 	                		newUser.local.address = JSON.stringify(addr);
-	                		newUser.local.firstName = req.param('firstName');
-	                		newUser.local.lastName = req.param('lastName');
+	                		newUser.local.firstname = req.param('firstname');
+	                		newUser.local.lastname = req.param('lastname');
 	    	     
 	    	              // save the user
 	                		newUser.save(function(err) {
