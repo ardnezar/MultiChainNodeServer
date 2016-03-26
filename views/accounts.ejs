@@ -31,15 +31,13 @@
 	                    <p>
 	                        <!--<strong>id</strong>: <%= user._id %><br> -->
 	                        <strong>Email :</strong> <%= user.local.username %><br>
-	                        <strong>DICoins account number :</strong> 
+	                        <strong>DICoins account number :</strong>
 	                        
 	                        <% if (!user.local.address) { %>
 						        {}
-						    <% } else user.local.address %> <br>
+						    <% } else %> <%= user.local.address %> <br>
 						                           	                       
-	                        <strong>Account balance :</strong> <% if (!user.local.balance) { %>
-						        0.0
-						    <% } else user.local.balance %>
+	                        <strong>Account balance :</strong> <%= user.local.balance %> 
 	                    </p>
 	            </div>
 	        </div>

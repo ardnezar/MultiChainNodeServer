@@ -153,20 +153,19 @@ module.exports = function(passport) {
             
             if(user.local.address) {
             	console.log('Valid address Extracting balance');
-	        	client.getaddressbalance(user.local.address, function (err, balance) {
-	        		if(balance) {	        				        			
-		    			console.log('Extracting balance'+JSON.stringify(balance)); 
-		    			//Update balance
-		        		user.local.balance = 6;
-	        			
-	        		}
-	    		});
+	        client.getaddressbalance(user.local.address, function (err, balance) {
+	       		if(balance) {	        				        			
+		    		//Update balance
+            			user.local.balance = balance[0].qty;
+            			console.log('Valid address Extracting balance:'+balance[0].qty);
+	        	}
+console.log('User1:'+JSON.stringify(user));
+            		return done(null, user);
+	    	});
             } else {
-            	console.log('Address not present');
-            }          
-            
-            return done(null, user);
-            
+            	console.log('Address not present');      
+            	return done(null, user);
+            }
             ////////
             
             
