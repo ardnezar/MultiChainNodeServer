@@ -37,7 +37,11 @@
 						        {}
 						    <% } else %> <%= user.local.address %> <br>
 						                           	                       
-	                        <strong>Account balance :</strong> <%= user.local.balance %> 
+	                        <strong>Account balance :</strong> 
+	                        
+	                        <% if (!user.local.balance) { %>
+						        0.0
+						    <% } else %> <%= user.local.balance %>
 	                    </p>
 	            </div>
 	        </div>

@@ -49,7 +49,7 @@ var info = require('./routes/getinfo')
 //var balance = require('./routes/getaddressbalance')
 var gettrans = require('./routes/gettransaction')
 var trans = require('./routes/transferasset')
-app.get('/info', info.getinfo);
+//app.get('/info', info.getinfo);
 //app.get('/balance', balance.getaddressbalance);
 app.get('/transactions', gettrans.gettransactions);
 app.post('/transfer', trans.transfer);

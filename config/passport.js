@@ -23,7 +23,7 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-    	console.log("method1");
+    	console.log('method1'+JSON.stringify(user));
         done(null, user.id);
     });
 
@@ -31,7 +31,7 @@ module.exports = function(passport) {
     passport.deserializeUser(function(id, done) {
     	console.log("method2");
         User.findById(id, function(err, user) {
-        	console.log("method3");
+        	console.log('method3'+JSON.stringify(user));
             done(err, user);
         });
     });
@@ -153,17 +153,22 @@ module.exports = function(passport) {
             
             if(user.local.address) {
             	console.log('Valid address Extracting balance');
-	        client.getaddressbalance(user.local.address, function (err, balance) {
-	       		if(balance) {	        				        			
-		    		//Update balance
-            			user.local.balance = balance[0].qty;
-            			console.log('Valid address Extracting balance:'+balance[0].qty);
-	        	}
-console.log('User1:'+JSON.stringify(user));
-            		return done(null, user);
-	    	});
+		        client.getaddressbalance(user.local.address, function (err, balance) {
+		       		if(balance) {	        				        			
+			    		//Update balance
+	            			user.local.balance = balance[0].qty;
+	            			console.log('Valid address Extracting balance:'+balance[0].qty);
+		        	}
+	        		return done(null, user);
+		    	});
             } else {
-            	console.log('Address not present');      
+            	console.log('Address not present');
+            	user.save(function(err) {
+            		if (err)
+            			console.log('error')
+        			else
+            	        console.log('success')
+        	    });
             	return done(null, user);
             }
             ////////
