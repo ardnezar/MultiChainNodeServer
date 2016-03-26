@@ -97,6 +97,7 @@ module.exports = function(passport) {
 	                		newUser.local.firstname = req.param('firstname');
 	                		newUser.local.lastname = req.param('lastname');
 	                		newUser.local.validated = false;
+	                		newUser.local.balance = 0;
 	    	     
 	    	              // save the user
 	                		newUser.save(function(err) {
@@ -124,6 +125,7 @@ module.exports = function(passport) {
         passReqToCallback : true
       },
       function(req, username, password, done) { 
+    	console.log('Login with username: '+username);
         // check in mongo if a user with username exists or not
         User.findOne({ 'local.username' :  username }, 
           function(err, user) {
@@ -144,7 +146,30 @@ module.exports = function(passport) {
             }
             // User and password both match, return user from 
             // done method which will be treated like success
+            
+            ///////
+            
+            var client = require("../lib/getaddressbalance");
+            
+            if(user.local.address) {
+            	console.log('Valid address Extracting balance');
+	        	client.getaddressbalance(user.local.address, function (err, balance) {
+	        		if(balance) {	        				        			
+		    			console.log('Extracting balance'+JSON.stringify(balance)); 
+		    			//Update balance
+		        		user.local.balance = 6;
+	        			
+	        		}
+	    		});
+            } else {
+            	console.log('Address not present');
+            }          
+            
             return done(null, user);
+            
+            ////////
+            
+            
           }
         );
     }));

@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/accounts', isLoggedIn, function(req, res) {
         res.render('accounts.ejs', {
-            user : req.user // get the user out of session and pass to template
+            user : req.user // get the user out of session and pass to template            
         });
     });
 

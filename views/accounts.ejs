@@ -10,36 +10,42 @@
     </style>
 </head>
 <body>
-<div class="container">
-
-    <div class="page-header text-center">
-        <h1><span class="fa fa-user"></span> Welcome <%= user.local.firstname %></h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    </div>
-    
-    <!-- show any messages that come back with authentication -->
-    <% if (!user.local.validated) { %>
-        <div class="alert alert-danger">Account validation in progress. This should take between 12-24 hours. You will have minimal access to your account during this time.</div>
-    <% } %>
-
-    <div class="row">
-
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Account information</h3>
-
-                    <p>
-                        <!--<strong>id</strong>: <%= user._id %><br> -->
-                        <strong>Username:</strong>: <%= user.local.username %><br>
-                        <strong>DICoins account number:</strong>: <%= user.local.address %>
-                    </p>
-
-            </div>
-        </div>
-
-    </div>
-
-</div>
+	<div class="container">
+	    <div class="page-header text-center">
+	        <h1><span class="fa fa-user"></span> Welcome <%= user.local.firstname %></h1>
+	        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	    </div>
+	    
+	    <!-- show any messages that come back with authentication -->
+	    <% if (!user.local.validated) { %>
+	        <div class="alert alert-danger">Account validation in progress. This should take between 12-24 hours. You will have minimal access to your account during this time.</div>
+	    <% } %>
+	
+	    <div class="row">
+	
+	        <!-- LOCAL INFORMATION -->
+	        <div class="col-sm-6">
+	            <div class="well">
+	                <h3><span class="fa fa-user"></span> Account information</h3>
+	
+	                    <p>
+	                        <!--<strong>id</strong>: <%= user._id %><br> -->
+	                        <strong>Email :</strong> <%= user.local.username %><br>
+	                        <strong>DICoins account number :</strong> 
+	                        
+	                        <% if (!user.local.address) { %>
+						        {}
+						    <% } else user.local.address %> <br>
+						                           	                       
+	                        <strong>Account balance :</strong> <% if (!user.local.balance) { %>
+						        0.0
+						    <% } else user.local.balance %>
+	                    </p>
+	            </div>
+	        </div>
+	
+	    </div>
+	
+	</div>
 </body>
 </html>
