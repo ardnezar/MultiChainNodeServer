@@ -12,7 +12,8 @@ module.exports = function(app, passport) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/accounts', isLoggedIn, function(req, res) {
-        res.render('accounts.ejs', {        	
+        res.render('accounts.ejs', {
+        	message: '',
             user : req.user // get the user out of session and pass to template            
         });
 //    	user = req.user;
@@ -43,11 +44,9 @@ module.exports = function(app, passport) {
         failureFlash : true 
     }));
     
-//    app.post('/login', function(req, res) {
-////    	req.message("Hello");
-////    	res.render('index', { message: req.flash('message') });
-//    	 res.send("Login Post\n");
-//    });
+    var transferClient = require("../lib/transferasset");
+    
+    app.post('/transfer', transferClient.transfer);
     
     // show the login form
     app.get('/login', function(req, res) {
@@ -59,6 +58,18 @@ module.exports = function(app, passport) {
     app.get('/signup', function(req, res) {
         // render the page and pass in any flash data if it exists
         res.render('signup', { message: req.flash('signupMessage') }); 
+    });
+    
+    // show the login form
+    app.get('/transfer', isLoggedIn, function(req, res) {
+        // render the page and pass in any flash data if it exists
+    	console.log("Get headers:"+JSON.stringify(req.headers));
+        res.render('transfer', 
+        	{ 
+        		message: 'Hello Transfer Test',
+        		from: ''
+        	    		
+        	}); 
     });
 
 

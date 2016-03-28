@@ -20,6 +20,11 @@
 	    <% if (!user.local.validated) { %>
 	        <div class="alert alert-danger">Account validation in progress. This should take between 12-24 hours. You will have minimal access to your account during this time.</div>
 	    <% } %>
+	    
+	     <!-- show any messages that come back with authentication -->
+	    <% if (message.length > 0) { %>
+	        <div class="alert alert-success"><%= message %></div>
+	    <% } %>
 	
 	    <div class="row">
 	
@@ -43,6 +48,11 @@
 						        0
 						    <% } else %> <%= user.local.balance %>
 	                    </p>
+	                    	                    
+	                    <%
+	                    useraddress = "/transfer?from="+user.local.username;
+	                    %>
+	                    <p>Want to transfer funds? <a href= <%= useraddress %> >Transfer</a></p>
 	            </div>
 	        </div>
 	

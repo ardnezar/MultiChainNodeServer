@@ -47,8 +47,8 @@ if ('development' == app.get('env')) {
 
 var info = require('./routes/getinfo')
 //var balance = require('./routes/getaddressbalance')
-var gettrans = require('./routes/gettransaction')
-var trans = require('./routes/transferasset')
+var gettrans = require('./lib/gettransactions')
+var trans = require('./lib/transferasset')
 //app.get('/info', info.getinfo);
 //app.get('/balance', balance.getaddressbalance);
 app.get('/transactions', gettrans.gettransactions);
