@@ -12,6 +12,8 @@ module.exports = function(app, passport) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/accounts', isLoggedIn, function(req, res) {
+    	console.log("Username..accounts:"+req.user);
+    	console.log("Get accounts:"+JSON.stringify(req.headers));
         res.render('accounts.ejs', {
         	message: '',
             user : req.user // get the user out of session and pass to template            
@@ -54,15 +56,29 @@ module.exports = function(app, passport) {
         res.render('login', { message: req.flash('loginMessage') }); 
     });
     
+    
+    
+    /*
+     * Get job listings
+     */
+    
+    var jobpostListClient = require("../lib/getjoblistings");
+
+    // show the post form
+    app.get('/listjobpost', isLoggedIn, jobpostListClient.joblists);
+    
+    
+    
     // show the login form
     app.get('/signup', function(req, res) {
         // render the page and pass in any flash data if it exists
         res.render('signup', { message: req.flash('signupMessage') }); 
     });
     
-    // show the login form
+    // show the transfer form
     app.get('/transfer', isLoggedIn, function(req, res) {
         // render the page and pass in any flash data if it exists
+    	console.log("Username..transfer:"+req.user);
     	console.log("Get headers:"+JSON.stringify(req.headers));
         res.render('transfer', 
         	{ 
@@ -71,15 +87,28 @@ module.exports = function(app, passport) {
         	    		
         	}); 
     });
-
-
-    // process the login form
-    // app.post('/login', do all our passport stuff here);
     
-//    app.get('/signup', function(req, res){
-//        res.render('register',{message: req.flash('message')});
-//    });
+    var buyJobClient = require("../lib/buyjob");
+    
+    app.post('/buyjob', isLoggedIn, buyJobClient.buyjob);
+    
+    
+    var jobpostClient = require("../lib/createnewjobpost");
+    
+    app.post('/jobpost', isLoggedIn, jobpostClient.jobpost);
 
+    // show the post form
+    app.get('/jobpost', isLoggedIn, function(req, res) {
+        // render the page and pass in any flash data if it exists
+    	console.log("Username..jobpost:"+req.user);
+    	console.log("Get headers:"+JSON.stringify(req.headers));
+        res.render('jobpost', 
+        	{ 
+        		message: 'Create new job post',
+        		from: ''
+        	    		
+        	}); 
+    });
     // =====================================
     // SIGNUP ==============================
     // =====================================

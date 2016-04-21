@@ -81,48 +81,80 @@ module.exports = function(passport) {
 	              // if there is no user with that email
 	              // create the user
 	            	
-	            	var client = require("../lib/getnewaddress");
-	            	
-	            	client.getNewAddress(function (err, addr) {
-	            		if(err) {
-	            			return done(null, false, 
-	           	                 req.flash('signupMessage','Error in signup. Please try after some time.'));
-	            		} else if(addr) {
-	            			console.log('Creating new user with generated address:'+addr);
-	            			console.log('Creating new user with firstname:'+req.param('firstname'));
-	    	            	var newUser = new User();
-	    	              // set the user's local credentials
-	    	            	newUser.local.username = username;
-	                		newUser.local.password = newUser.generateHash(password);
-	                		newUser.local.address = JSON.stringify(addr);
-	                		newUser.local.firstname = req.param('firstname');
-	                		newUser.local.lastname = req.param('lastname');
-	                		newUser.local.validated = false;
-	                		newUser.local.balance = 0;
-	    	     
-	    	              // save the user
-	                		newUser.save(function(err) {
-	    		                if (err){
-	    		                  console.log('Error in Saving user: '+err);  
-	    		                  return done(null, false, 
-	    		           	                 req.flash('signupMessage','Internal error in signup. Please try after some time.'));
-	    		                }
-	    		                var newLeader = new LeaderBoard();
-	    		                newLeader.username = username;
-	    		                newLeader.points = 0;
-	    		                
-	    		                newLeader.save(function(err) {
-		    		                if (err){
-		    		                  console.log('Error in Saving user: '+err);  
-		    		                  return done(null, false, 
-		    		           	                 req.flash('signupMessage','Internal error in signup. Please try after some time.'));
-		    		                }		    		                		    		                
-		    		                console.log('User Registration successful');    
-		    		                return done(null, newUser);
-		                		});
-	                		});
-	            		}
-	            	});	            		            
+//	            	var client = require("../lib/getnewaddress");
+//	            	
+//	            	client.getNewAddress(function (err, addr) {
+//	            		if(err) {
+//	            			return done(null, false, 
+//	           	                 req.flash('signupMessage','Error in signup. Please try after some time.'));
+//	            		} else if(addr) {
+//	            			console.log('Creating new user with generated address:'+addr);
+//	            			console.log('Creating new user with firstname:'+req.param('firstname'));
+//	    	            	var newUser = new User();
+//	    	              // set the user's local credentials
+//	    	            	newUser.local.username = username;
+//	                		newUser.local.password = newUser.generateHash(password);
+//	                		newUser.local.address = JSON.stringify(addr);
+//	                		newUser.local.firstname = req.param('firstname');
+//	                		newUser.local.lastname = req.param('lastname');
+//	                		newUser.local.validated = false;
+//	                		newUser.local.balance = 0;
+//	    	     
+//	    	              // save the user
+//	                		newUser.save(function(err) {
+//	    		                if (err){
+//	    		                  console.log('Error in Saving user: '+err);  
+//	    		                  return done(null, false, 
+//	    		           	                 req.flash('signupMessage','Internal error in signup. Please try after some time.'));
+//	    		                }
+//	    		                var newLeader = new LeaderBoard();
+//	    		                newLeader.username = username;
+//	    		                newLeader.points = 0;
+//	    		                
+//	    		                newLeader.save(function(err) {
+//		    		                if (err){
+//		    		                  console.log('Error in Saving user: '+err);  
+//		    		                  return done(null, false, 
+//		    		           	                 req.flash('signupMessage','Internal error in signup. Please try after some time.'));
+//		    		                }		    		                		    		                
+//		    		                console.log('User Registration successful');    
+//		    		                return done(null, newUser);
+//		                		});
+//	                		});
+//	            		}
+//	            	});
+        			console.log('Creating new user with firstname:'+req.param('firstname'));
+	            	var newUser = new User();
+	              // set the user's local credentials
+	            	newUser.local.username = username;
+            		newUser.local.password = newUser.generateHash(password);
+            		newUser.local.address = "";
+            		newUser.local.firstname = req.param('firstname');
+            		newUser.local.lastname = req.param('lastname');
+            		newUser.local.validated = false;
+            		newUser.local.balance = 0;
+	     
+	              // save the user
+            		newUser.save(function(err) {
+		                if (err){
+		                  console.log('Error in Saving user: '+err);  
+		                  return done(null, false, 
+		           	                 req.flash('signupMessage','Internal error in signup. Please try after some time.'));
+		                }
+		                var newLeader = new LeaderBoard();
+		                newLeader.username = username;
+		                newLeader.points = 0;
+		                
+		                newLeader.save(function(err) {
+    		                if (err){
+    		                  console.log('Error in Saving user: '+err);  
+    		                  return done(null, false, 
+    		           	                 req.flash('signupMessage','Internal error in signup. Please try after some time.'));
+    		                }		    		                		    		                
+    		                console.log('User Registration successful');    
+    		                return done(null, newUser);
+                		});
+            		});
 	            }
 	          });
         };

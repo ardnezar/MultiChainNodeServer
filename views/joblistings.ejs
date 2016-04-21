@@ -1,0 +1,93 @@
+<!-- views/accounts.ejs -->
+<!doctype html>
+<html>
+<head>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    
+    <style>
+        body        { padding-top:80px; word-wrap:break-word; }
+        
+        table {
+		  border-collapse: separate;
+		  border-spacing: 4px;
+		}
+		table,
+		th,
+		td {
+		  border: 1px solid #cecfd5;
+		}
+		th,
+		td {
+		  padding: 10px 15px;
+		}
+		thead {
+		  background: #395870;
+		  background: linear-gradient(#49708f, #293f50);
+		  color: #fff;
+		  font-size: 11px;
+		  text-transform: uppercase;
+		}
+    </style>
+</head>
+
+<% function handleClick(evt) {
+  var node = evt.target || evt.srcElement;
+  if (node.name == 'edit') {
+    node.name = "Modify";
+  }
+} %>
+
+
+<body>
+	<div class="container">
+		<div class="page-header text-center">
+	        <h1>Job Listings</h1>
+	        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	    </div>
+	    
+	    <!-- show any messages that come back with authentication -->
+	    <% if (message.length > 0) { %>
+	        <div class="alert alert-success text-center"><%= message %></div>
+	    <% } %>
+	    
+		<table align="center">
+			<thead>
+			    <tr>
+			      <th scope="col" colspan="3">Title</th>
+			      <th scope="col" colspan="3">Description</th>
+			      <th scope="col" colspan="3">Price</th>
+			      <th scope="col" colspan="3">Action</th>
+			    </tr>
+		  	</thead>	    	    
+		    <% if (posts.length) { %>	    
+	    	        
+	    	        <tbody>
+				    <% posts.forEach(function(post) { %>
+				        <h3>
+				        <tr>	
+				            <td colspan="3"><%= post.title %> </td> 
+				            <td colspan="3"><%= post.description %> </td> 
+				            <td colspan="3"><%= post.price %> </td>
+				            <td colspan="3">
+				            <% 
+					        	actionUrl = "/buyjob?id="+post._id;
+				        	%>
+				            <form name="f1" action=<%=actionUrl %>  method="post">
+			                	<button type='submit' name='foo' value='Buy' class='button'>Buy</button>
+			               	</form>
+			               	</td>
+				        </h3>
+				        </tr>
+				    <% }); %>
+				    </tbody>
+				
+			<% } %>	
+		</table>
+		<div class="page-header text-center">
+		<p>Go back Home? <a href="/accounts">Home</a></p>
+		</div>
+	</div>
+</body>
+</html>

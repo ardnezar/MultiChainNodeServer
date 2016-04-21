@@ -69,7 +69,7 @@ app.post('/transfer', trans.transfer);
 var dbConfig = require('./config/database.js');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/passport');
-require('./config/passport')(passport);
+require('./config/passport_test')(passport);
 
 //Configuring Passport
 
