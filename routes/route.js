@@ -14,6 +14,8 @@ module.exports = function(app, passport) {
     app.get('/accounts', isLoggedIn, function(req, res) {
     	console.log("Username..accounts:"+req.user);
     	console.log("Get accounts:"+JSON.stringify(req.headers));
+		console.log("Get accounts req:"+JSON.stringify(req.headers));
+		console.log("Get accounts res:"+JSON.stringify(res.headers));
         res.render('accounts.ejs', {
         	message: '',
             user : req.user // get the user out of session and pass to template            
