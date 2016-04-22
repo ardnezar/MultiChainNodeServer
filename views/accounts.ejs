@@ -43,9 +43,11 @@
 						                           	                       
 	                        <strong>Account balance :</strong> 
 	                        
-	                        <% if (!user.local.balance) { %>
-						        0
-						    <% } else %> <%= user.local.balance %>
+	                        <% if (user.local.balance) { %>
+						        <%= user.local.balance %>
+						    <% } else %>
+						    	0
+						    % } 
 	                    </p>
 	                    	                    
 	                    <p>Want to transfer funds? <a href= "/transfer" >Transfer</a></p>

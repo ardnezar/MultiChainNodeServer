@@ -168,6 +168,7 @@ module.exports = function(passport) {
 		        client.getaddressbalance(user.local.address, function (err, balance) {
 		       		if(balance) {	        				        			
 			    		//Update balance
+		       			if(balance.length > 0) {
 	            			user.local.balance = balance[0].qty;
 	            			console.log('Valid address Extracting balance:'+balance[0].qty);
 	            			user.save(function(err) {
@@ -176,6 +177,9 @@ module.exports = function(passport) {
 	    	        			else
 	    	            	        console.log('success')
 	    	        	    });
+		       			} else {
+		       				console.log("Valid address Extracting balance...zero balance");
+		       			}
 		        	}
 		       		return done(null, user);
 		       		
