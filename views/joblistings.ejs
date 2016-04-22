@@ -57,6 +57,8 @@
 		<table align="center">
 			<thead>
 			    <tr>
+			      <th scope="col" colspan="3">Posted On</th>
+			      <th scope="col" colspan="3">Posted By</th>
 			      <th scope="col" colspan="3">Title</th>
 			      <th scope="col" colspan="3">Description</th>
 			      <th scope="col" colspan="3">Price</th>
@@ -67,7 +69,9 @@
 	    	        <tbody>
 				    <% posts.forEach(function(post) { %>
 				        <h3>
-				        <tr>	
+				        <tr>
+				        	<td colspan="3">""</td>
+				        	<td colspan="3"><%= post.username %> </td>	
 				            <td colspan="3"><%= post.title %> </td> 
 				            <td colspan="3"><%= post.description %> </td> 
 				            <td colspan="3"><%= post.price %> </td>

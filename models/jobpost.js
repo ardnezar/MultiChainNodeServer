@@ -10,7 +10,8 @@ var userSchema = mongoose.Schema({
 	address			: String,
 	title     		: String,
     description     : String,
-    price      		: Number
+    price      		: Number,
+    postedOn        : Date
 
 });
 
