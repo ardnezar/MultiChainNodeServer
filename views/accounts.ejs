@@ -39,15 +39,17 @@
 	                        
 	                        <% if (!user.local.address) { %>
 						        {}
-						    <% } else %> <%= user.local.address %> <br>
-						                           	                       
+						    <% } else { %> <%= user.local.address %> <br>
+						    
+					       	<% } %>
+					       	                    	                       
 	                        <strong>Account balance :</strong> 
 	                        
 	                        <% if (user.local.balance) { %>
 						        <%= user.local.balance %>
-						    <% } else %>
+						    <% } else {%>
 						    	0
-						    % } 
+						   <% } %>
 	                    </p>
 	                    	                    
 	                    <p>Want to transfer funds? <a href= "/transfer" >Transfer</a></p>
