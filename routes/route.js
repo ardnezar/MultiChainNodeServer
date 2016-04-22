@@ -48,9 +48,9 @@ module.exports = function(app, passport) {
         failureFlash : true 
     }));
     
-    var transferClient = require("../lib/transferasset");
+//    var transferClient = require("../lib/transferasset");
     
-    app.post('/transfer', transferClient.transfer);
+//    app.post('/transfer', transferClient.transfer);
     
     // show the login form
     app.get('/login', function(req, res) {

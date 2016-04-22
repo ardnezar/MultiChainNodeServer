@@ -52,7 +52,7 @@ var trans = require('./lib/transferasset')
 //app.get('/info', info.getinfo);
 //app.get('/balance', balance.getaddressbalance);
 app.get('/transactions', gettrans.gettransactions);
-app.post('/transfer', trans.transfer);
+//app.post('/transfer', trans.transfer);
 
 //app.get('/users', user.list);
 /*app.get('/', function(req, res){
@@ -69,7 +69,8 @@ app.post('/transfer', trans.transfer);
 var dbConfig = require('./config/database.js');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/passport');
-require('./config/passport_test')(passport);
+//require('./config/passport_test')(passport);
+require('./config/passport')(passport);
 
 //Configuring Passport
 

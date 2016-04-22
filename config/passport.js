@@ -170,14 +170,15 @@ module.exports = function(passport) {
 			    		//Update balance
 	            			user.local.balance = balance[0].qty;
 	            			console.log('Valid address Extracting balance:'+balance[0].qty);
+	            			user.save(function(err) {
+	    	            		if (err)
+	    	            			console.log('error')
+	    	        			else
+	    	            	        console.log('success')
+	    	        	    });
 		        	}
-		       		user.save(function(err) {
-	            		if (err)
-	            			console.log('error')
-	        			else
-	            	        console.log('success')
-	        	    });
-	        		return done(null, user);
+		       		return done(null, user);
+		       		
 		    	});
             } else {
             	console.log('Address not present');            	

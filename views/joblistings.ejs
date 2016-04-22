@@ -48,9 +48,11 @@
 	    </div>
 	    
 	    <!-- show any messages that come back with authentication -->
-	    <% if (message.length > 0) { %>
+	    <% if (message.length > 0 && message.type <= 0 ) { %>
 	        <div class="alert alert-success text-center"><%= message %></div>
-	    <% } %>
+	    <% } else if (message.length > 0) { %>
+	    	<div class="alert alert-danger text-center"><%= message %></div>
+        <% } %>
 	    
 		<table align="center">
 			<thead>
@@ -61,8 +63,7 @@
 			      <th scope="col" colspan="3">Action</th>
 			    </tr>
 		  	</thead>	    	    
-		    <% if (posts.length) { %>	    
-	    	        
+		    <% if (posts.length) { %>	    	        
 	    	        <tbody>
 				    <% posts.forEach(function(post) { %>
 				        <h3>
@@ -72,7 +73,7 @@
 				            <td colspan="3"><%= post.price %> </td>
 				            <td colspan="3">
 				            <% 
-					        	actionUrl = "/buyjob?id="+post._id;
+					        	actionUrl = "/buyjob?id="+post._id+"&seller="+post.address;
 				        	%>
 				            <form name="f1" action=<%=actionUrl %>  method="post">
 			                	<button type='submit' name='foo' value='Buy' class='button'>Buy</button>
