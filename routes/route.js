@@ -25,6 +25,15 @@ module.exports = function(app, passport) {
     });
 
     // =====================================
+    // Get transactions ========
+    // =====================================
+    
+    var gettrans = require('../lib/gettransactions')
+
+    // show the post form
+    app.get('/transactions', isLoggedIn, gettrans.gettransactions);    
+
+    // =====================================
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function(req, res) {

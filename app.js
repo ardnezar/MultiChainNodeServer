@@ -51,7 +51,7 @@ var gettrans = require('./lib/gettransactions')
 var trans = require('./lib/transferasset')
 //app.get('/info', info.getinfo);
 //app.get('/balance', balance.getaddressbalance);
-app.get('/transactions', gettrans.gettransactions);
+//app.get('/transactions', gettrans.gettransactions);
 //app.post('/transfer', trans.transfer);
 
 //app.get('/users', user.list);
