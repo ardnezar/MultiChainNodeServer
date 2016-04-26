@@ -13,6 +13,15 @@
 	<div class="container">
 	    <div class="page-header text-center">
 	        <h1><span class="fa fa-user"></span> Welcome <%= user.local.firstname %></h1>
+	        <h3> <strong>Balance: </strong>
+        			<font color="green"> 
+	        		<% if (user.local.balance) { %>
+						        <%= user.local.balance %>
+						    <% } else {%>
+						    	0
+						   <% } %>
+				   	</font>
+		   </h3>
 	        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
 	    </div>
 	    
@@ -38,23 +47,22 @@
 	                        <strong>Blockchain Public Key: </strong>
 	                        
 	                        <% if (!user.local.address) { %>
-						        {}
+						        {} <br>
 						    <% } else { %> <%= user.local.address %> <br>
 						    
 					       	<% } %>
 					       	                    	                       
-	                        <strong>Balance: </strong> 
 	                        
-	                        <% if (user.local.balance) { %>
-						        <%= user.local.balance %>
-						    <% } else {%>
-						    	0
-						   <% } %> (The balance might not reflect the latest transactions)						   
+	                        
+	                        					   
 	                    </p>
 	                    	                    
 	                    <p>Create new posts? <a href= "/jobpost" >Create New jobpost</a></p>
 	                    <p>Check latest job posts? <a href= "/listjobpost" >List jobposts</a></p>
-	                    <p>Check your recent transactions ? <a href= "/transactions" >Transaction history</a></p>
+	                    <p>Check your recent transactions? <a href= "/transactions" >Transaction history</a></p>
+	                    <p><a href= "/jobpost" >My Posts</a></p>
+	                    <p><a href= "/jobpost" >Services Sold</a></p>
+	                    <p><a href= "/jobpost" >Services Purchased</a></p>
             </div>
 	
 	    </div>
