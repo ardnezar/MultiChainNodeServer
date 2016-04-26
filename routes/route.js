@@ -11,18 +11,27 @@ module.exports = function(app, passport) {
     // =====================================
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
-    app.get('/accounts', isLoggedIn, function(req, res) {
-    	console.log("Username..accounts:"+req.user);
-    	console.log("Get accounts:"+JSON.stringify(req.headers));
-		console.log("Get accounts req:"+JSON.stringify(req.headers));
-		console.log("Get accounts res:"+JSON.stringify(res.headers));
-        res.render('accounts.ejs', {
-        	message: '',
-            user : req.user // get the user out of session and pass to template            
-        });
-//    	user = req.user;
-//    	res.send(JSON.stringify(user));
-    });
+	
+	var getAccounts = require('../lib/getAccountInfo')	
+	
+    app.get('/accounts', isLoggedIn, getAccounts.getaccountinfo);
+    		
+    		
+//    		function(req, res) {
+//    	console.log("Username..accounts:"+req.user);
+//    	console.log("Get accounts:"+JSON.stringify(req.headers));
+//		console.log("Get accounts req:"+JSON.stringify(req.headers));
+//		console.log("Get accounts res:"+JSON.stringify(res.headers));
+////        res.render('accounts.ejs', {
+////        	message: '',
+////            user : req.user // get the user out of session and pass to template            
+////        });
+////    	user = req.user;
+////    	res.send(JSON.stringify(user));
+//		
+//    }
+    
+//    );
 
     // =====================================
     // Get transactions ========
