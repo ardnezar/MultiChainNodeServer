@@ -30,12 +30,12 @@
 	
 	        <!-- LOCAL INFORMATION -->
 	        <div class="grid">
-	                <h3><span class="fa fa-user"></span> Account information</h3>
+	                <h3><span class="fa fa-user"></span> My Account</h3>
 	
 	                    <p>
 	                        <!--<strong>id</strong>: <%= user._id %><br> -->
-	                        <strong>Email :</strong> <%= user.local.username %><br>
-	                        <strong>DICoins account number :</strong>
+	                        <strong>Email: </strong> <%= user.local.username %><br>
+	                        <strong>Blockchain Public Key: </strong>
 	                        
 	                        <% if (!user.local.address) { %>
 						        {}
@@ -43,7 +43,7 @@
 						    
 					       	<% } %>
 					       	                    	                       
-	                        <strong>Account balance :</strong> 
+	                        <strong>Balance: </strong> 
 	                        
 	                        <% if (user.local.balance) { %>
 						        <%= user.local.balance %>
