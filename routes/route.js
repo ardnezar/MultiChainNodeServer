@@ -89,6 +89,28 @@ module.exports = function(app, passport) {
     
     
     
+    /*
+     * Get Job purchase history
+     */
+    
+    var jobPurchaseHistoryClient = require("../lib/getjobpurchasehistory");
+
+    app.get('/listjobpurchasehistory', isLoggedIn, jobPurchaseHistoryClient.jobPurchaselists);
+    
+    /*
+     * Get Job Sales history
+     */
+    
+    var jobSalesHistoryClient = require("../lib/getjobsaleshistory");
+
+    app.get('/listjobsaleshistory', isLoggedIn, jobSalesHistoryClient.jobSaleslists);
+    
+    
+    
+    
+    
+    
+    
     // show the login form
     app.get('/signup', function(req, res) {
         // render the page and pass in any flash data if it exists
