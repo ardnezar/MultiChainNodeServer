@@ -89,12 +89,9 @@ module.exports = function(app, passport) {
     
     /*
      * Get job listings for the current user
-     */
-    
+     */    
     var jobpostListCurrentuserClient = require("../lib/getjobposthistory");
-
-    // show the post form
-    app.get('/listjobpost', isLoggedIn, jobpostListCurrentuserClient.jobPostlists);
+    app.get('/listcurrentjobpost', isLoggedIn, jobpostListCurrentuserClient.jobPostlists);
     
     /*
      * Get Job purchase history
