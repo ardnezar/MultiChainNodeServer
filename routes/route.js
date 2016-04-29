@@ -79,7 +79,7 @@ module.exports = function(app, passport) {
     
     
     /*
-     * Get job listings
+     * Get all job listings
      */
     
     var jobpostListClient = require("../lib/getjoblistings");
@@ -87,7 +87,14 @@ module.exports = function(app, passport) {
     // show the post form
     app.get('/listjobpost', isLoggedIn, jobpostListClient.joblists);
     
+    /*
+     * Get job listings for the current user
+     */
     
+    var jobpostListCurrentuserClient = require("../lib/getjobposthistory");
+
+    // show the post form
+    app.get('/listjobpost', isLoggedIn, jobpostListCurrentuserClient.jobPostlists);
     
     /*
      * Get Job purchase history
