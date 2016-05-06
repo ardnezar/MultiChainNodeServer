@@ -24,7 +24,7 @@ var cookieParser = require('cookie-parser');
 
 
 // all environments
-app.set('port', 3000);
+app.set('port', 80);
 //app.set('hostname', '127.0.0.1')
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
