@@ -11,8 +11,7 @@ var userSchema = mongoose.Schema({
 	title     		: String,
     description     : String,
     price      		: Number,
-    postedOn        : Date
-
+    postedOn		: { type: Date, default: Date.now }
 });
 
 // create the model for posts and expose it to our app

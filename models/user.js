@@ -42,7 +42,8 @@ var userSchema = mongoose.Schema({
         firstname    : String,
         lastname     : String,
         validated    : Boolean,
-        balance      : Number
+        balance      : Number,
+        phonenumber	 : String
     },
     facebook         : {
         id           : String,

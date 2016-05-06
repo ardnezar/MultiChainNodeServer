@@ -90,6 +90,7 @@ module.exports = function(passport) {
 	            		} else if(addr) {
 	            			console.log('Creating new user with generated address:'+addr);
 	            			console.log('Creating new user with firstname:'+req.param('firstname'));
+	            			console.log('Creating new user with phonenumber:'+req.param('phonenumber'));
 	    	            	var newUser = new User();
 	    	              // set the user's local credentials
 	    	            	newUser.local.username = username;
@@ -97,6 +98,7 @@ module.exports = function(passport) {
 	                		newUser.local.address = JSON.stringify(addr);
 	                		newUser.local.firstname = req.param('firstname');
 	                		newUser.local.lastname = req.param('lastname');
+	                		newUser.local.phonenumber = req.param('phonenumber');
 	                		newUser.local.validated = false;
 	                		newUser.local.balance = 0;
 	    	     
@@ -161,6 +163,9 @@ module.exports = function(passport) {
             
             ///////
             
+//            var messageClient = require("../lib/sendMessageToSeller");
+//            messageClient.sendMessage(user.local.username);
+            
             var client = require("../lib/getaddressbalance");
             
             if(user.local.address) {
@@ -189,7 +194,6 @@ module.exports = function(passport) {
             	return done(null, user);
             }
             ////////
-            
             
           }
         );
