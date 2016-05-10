@@ -43,7 +43,7 @@
 <body>
 	<div class="container">
 		<div class="page-header text-center">
-	        <h1>Recent activities</h1>
+	        <h1>Activity Feed</h1>
 	        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
 	    </div>
 	    
@@ -60,7 +60,7 @@
 				    <% posts.forEach(function(post) { %>
 				        <h3>
 				        <tr>
-				        	<td ><%= post.buyer %> sold  <%= post.title %> to <%= post.seller %> for <%= post.price %> dicoins</td>					            
+				        	<td ><b><%= post.buyer %></b> sold  <%= post.title %> to <b><%= post.seller %></b> for <b><%= post.price %> dicoins</b></td>					            
 				        </h3>
 				        </tr>
 				    <% }); %>
