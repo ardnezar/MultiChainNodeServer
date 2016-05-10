@@ -40,7 +40,13 @@ module.exports = function(app, passport) {
     var gettrans = require('../lib/gettransactions')
 
     // show the post form
-    app.get('/transactions', isLoggedIn, gettrans.gettransactions);    
+    app.get('/transactions', isLoggedIn, gettrans.gettransactions);
+    
+    
+    var getrecent = require('../lib/getrecenttransactions')
+
+    // show the post form
+    app.get('/recent', isLoggedIn, getrecent.gettransactions);
 
     // =====================================
     // HOME PAGE (with login links) ========

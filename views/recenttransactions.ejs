@@ -1,0 +1,76 @@
+<!-- views/accounts.ejs -->
+<!doctype html>
+<html>
+<head>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    
+    <style>
+        body        { padding-top:80px; word-wrap:break-word; }
+        
+        table {
+		  border-collapse: separate;
+		  border-spacing: 4px;
+		}
+		table,
+		th,
+		td {
+		  border: 1px solid #cecfd5;
+		}
+		th,
+		td {
+		  padding: 10px 15px;
+		}
+		thead {
+		  background: #395870;
+		  background: linear-gradient(#49708f, #293f50);
+		  color: #fff;
+		  font-size: 11px;
+		  text-transform: uppercase;
+		}
+    </style>
+</head>
+
+<% function handleClick(evt) {
+  var node = evt.target || evt.srcElement;
+  if (node.name == 'edit') {
+    node.name = "Modify";
+  }
+} %>
+
+
+<body>
+	<div class="container">
+		<div class="page-header text-center">
+	        <h1>Sales history</h1>
+	        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	    </div>
+	    
+	    <!-- show any messages that come back with authentication -->
+	    <% if (message.length > 0 && messageType <= 0 ) { %>
+	        <div class="alert alert-success text-center"><%= message %></div>
+	    <% } else if (message.length > 0) { %>
+	    	<div class="alert alert-danger text-center"><%= message %></div>
+        <% } %>
+	    
+		<table align="center">			    	   
+		    <% if (posts.length) { %>	    	        
+	    	        <tbody>
+				    <% posts.forEach(function(post) { %>
+				        <h3>
+				        <tr>
+				        	<td ><%= post.buyer %> sold  <%= post.title %> to <%= post.seller %> for <%= post.price %></td>					            
+				        </h3>
+				        </tr>
+				    <% }); %>
+				    </tbody>
+				
+			<% } %>	
+		</table>
+		<div class="page-header text-center">
+		<p>Go back Home? <a href="/accounts">Home</a></p>
+		</div>
+	</div>
+</body>
+</html>
