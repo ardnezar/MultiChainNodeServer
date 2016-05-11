@@ -77,7 +77,7 @@
 				            <td colspan="3"><%= post.price %> </td>
 				            <td colspan="3">
 				            <% 
-					        	actionUrl = "/buyjob?id="+post._id+"&seller="+post.addres+"&sellerusername="+post.username;
+					        	actionUrl = "/buyjob?id="+post._id+"&seller="+post.address+"&sellerusername="+post.username;
 				        	%>
 				            <form name="f1" action=<%=actionUrl %>  method="post">
 			                	<button type='submit' name='foo' value='Buy' class='button'>Buy</button>
