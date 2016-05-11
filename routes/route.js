@@ -50,7 +50,7 @@ module.exports = function(app, passport) {
     //Show leaderboard
     var getleader = require('../lib/getleaderboard')
 
-    app.get('/leaderboard', isLoggedIn, getleader.getleaderboard);
+    app.get('/leaderboard', isLoggedIn, getleader.getleadboardlist);
 
     // =====================================
     // HOME PAGE (with login links) ========

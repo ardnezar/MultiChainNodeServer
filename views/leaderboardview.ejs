@@ -68,10 +68,12 @@
 				        <tr>
 				        	<% if (leader.firstname) { %>
 				        		<td colspan="6"><%= leader.firstname %> <%= leader.lastname %> </td>
-			        		<% } else { %>
+				        		<td colspan="3"><%= leader.points %> </td> 	
+			        		<% } else if(leader.username) { %>
 			        			<td colspan="6"><%= leader.username %></td>
+			        			<td colspan="3"><%= leader.points %> </td> 	
 			        		<% } %>
-				            <td colspan="3"><%= leader.points %> </td> 		            
+				            	            
 				        </h3>
 				        </tr>
 				    <% }); %>
