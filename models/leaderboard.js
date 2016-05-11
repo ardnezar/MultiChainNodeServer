@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
 
 // define the schema for our user model
 var leaderboardSchema = mongoose.Schema({
-	firstname     : String,
+	username     : String,
+	firstname    : String,
 	lastname     : String,
     points       : Number
 });

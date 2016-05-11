@@ -39,14 +39,18 @@ module.exports = function(app, passport) {
     
     var gettrans = require('../lib/gettransactions')
 
-    // show the post form
     app.get('/transactions', isLoggedIn, gettrans.gettransactions);
     
-    
+    //Show activity feed
     var getrecent = require('../lib/getrecenttransactions')
 
-    // show the post form
-    app.get('/recent', isLoggedIn, getrecent.gettransactions);
+    app.get('/recent', getrecent.gettransactions);
+    
+    
+    //Show leaderboard
+    var getleader = require('../lib/getleaderboard')
+
+    app.get('/leaderboard', isLoggedIn, getleader.getleaderboard);
 
     // =====================================
     // HOME PAGE (with login links) ========

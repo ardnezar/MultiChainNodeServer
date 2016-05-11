@@ -43,7 +43,7 @@
 <body>
 	<div class="container">
 		<div class="page-header text-center">
-	        <h1>Job Listings</h1>
+	        <h1>Purchase history</h1>
 	        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
 	    </div>
 	    
@@ -57,32 +57,21 @@
 		<table align="center">
 			<thead>
 			    <tr>
-			      <th scope="col" colspan="3">Posted On</th>
-			      <th scope="col" colspan="3">Posted By</th>
-			      <th scope="col" colspan="3">Title</th>
-			      <th scope="col" colspan="3">Description</th>
-			      <th scope="col" colspan="3">Price</th>
-			      <th scope="col" colspan="3">Action</th>
+			      <th scope="col" colspan="6">Name</th>
+			      <th scope="col" colspan="3">Points</th>
 			    </tr>
 		  	</thead>	    	    
-		    <% if (posts.length) { %>	    	        
+		    <% if (leaders.length) { %>	    	        
 	    	        <tbody>
-				    <% posts.forEach(function(post) { %>
+				    <% leaders.forEach(function(leader) { %>
 				        <h3>
 				        <tr>
-				        	<td colspan="3">""</td>
-				        	<td colspan="3"><%= post.username %> </td>	
-				            <td colspan="3"><%= post.title %> </td> 
-				            <td colspan="3"><%= post.description %> </td> 
-				            <td colspan="3"><%= post.price %> </td>
-				            <td colspan="3">
-				            <% 
-					        	actionUrl = "/buyjob?id="+post._id+"&seller="+post.addres+"&sellerusername="+post.username;
-				        	%>
-				            <form name="f1" action=<%=actionUrl %>  method="post">
-			                	<button type='submit' name='foo' value='Buy' class='button'>Buy</button>
-			               	</form>
-			               	</td>
+				        	<% if (leader.firstname) { %>
+				        		<td colspan="6"><%= leader.firstname %> <%= leader.lastname %> </td>
+			        		<% } else { %>
+			        			<td colspan="6"><%= leader.username %></td>
+			        		<% } %>
+				            <td colspan="3"><%= leader.points %> </td> 		            
 				        </h3>
 				        </tr>
 				    <% }); %>

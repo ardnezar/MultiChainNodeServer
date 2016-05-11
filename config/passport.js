@@ -111,6 +111,8 @@ module.exports = function(passport) {
 	    		                }
 	    		                var newLeader = new LeaderBoard();
 	    		                newLeader.username = username;
+	    		                newLeader.firstname = newUser.local.firstname;
+	    		                newLeader.lastname = newUser.local.lastname;
 	    		                newLeader.points = 0;
 	    		                
 	    		                newLeader.save(function(err) {
