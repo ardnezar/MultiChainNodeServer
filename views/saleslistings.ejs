@@ -69,7 +69,11 @@
 				    <% posts.forEach(function(post) { %>
 				        <h3>
 				        <tr>
-				        	<td colspan="3">""</td>
+				        	<% if (post.postedOn) { %>				        		
+				        		<td colspan="3"><%= post.date %></td>
+				        	<% } else { %>
+				        		<td colspan="3"> </td>
+				        	<% } %>
 				        	<td colspan="3"><%= post.buyer %> </td>	
 				            <td colspan="3"><%= post.title %> </td> 
 				            <td colspan="3"><%= post.description %> </td> 
