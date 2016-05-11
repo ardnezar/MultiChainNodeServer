@@ -69,8 +69,13 @@
 	    	        <tbody>
 				    <% posts.forEach(function(post) { %>
 				        <h3>
-				        <tr>
-				        	<td colspan="3">""</td>
+				        <tr>				        	
+				        	<% if (post.postedOn) { %>
+				        		
+				        		<td colspan="3"><%= post.postedOn %></td>
+				        	<% } else { %>
+				        		<td colspan="3"> </td>
+				        	<% } %>
 				        	<td colspan="3"><%= post.username %> </td>	
 				            <td colspan="3"><%= post.title %> </td> 
 				            <td colspan="3"><%= post.description %> </td> 

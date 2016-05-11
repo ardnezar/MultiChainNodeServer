@@ -56,6 +56,10 @@ module.exports = function(app, passport) {
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function(req, res) {
+    	var now = new Date();
+		var nowUtc = new Date( now.getTime() + (now.getTimezoneOffset() * 60000));
+		console.log('local date:'+nowUtc);
+		console.log('local dat1:'+new Date(now.toUTCString()));
     	res.render('index', { message: req.flash('message') });
 //    	res.send('Hello World\n');
     });

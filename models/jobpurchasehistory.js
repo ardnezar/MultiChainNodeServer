@@ -15,7 +15,7 @@ var jobTransactionSchema = mongoose.Schema({
 	title     		: String,
     description     : String,
     price      		: Number,
-    date			: { type: Date, default: Date.now }
+    date			: { type: Date }
 });
 
 // create the model for job transaction history
