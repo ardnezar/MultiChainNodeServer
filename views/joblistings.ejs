@@ -83,8 +83,8 @@
 				            <td colspan="3">
 				            <% 
 					        	actionUrl = "/buyjob?id="+post._id+"&seller="+post.address+"&sellerusername="+post.username;
-				        	%>
-				        	<%  if(user.username ===  post.username) { %>					        		
+						%>
+				        	<%  if(user.local.username ===  post.username) { %>					        		
 					        	<form name="f1" action=<%=actionUrl %>  method="post">
 			                		<button type='submit' name='foo' value='Buy' class='button'>Delete</button>
 			               		</form>
