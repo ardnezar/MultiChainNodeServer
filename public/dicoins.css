@@ -1,0 +1,98 @@
+.headerBanner {
+	background-color: #52bdec;
+	color: white;
+}
+
+/*a {
+    color: white;
+    font-family: 'Helvetica Neue';
+ 	font-weight: medium;
+ 	text-decoration: none;
+}*/
+
+body {	
+    font-family: 'Helvetica Neue';
+ 	font-weight: medium;
+}
+
+.headerColumnContainer {
+	display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    height: 120px;    
+}
+
+.headerLogo {	
+    width: 300px;
+    height: 70px;   
+    margin: 25px; 
+    background-image: url("Logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;    
+    margin-right: auto;
+}
+
+.headerLinksContainer {    
+	display: -webkit-flex;
+    display: flex;    
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;    
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    width: 800px;       
+    height:120px;        
+    margin-right:20px;
+}
+
+.headerLinksContainer a {
+	color: white;
+}
+
+.headerTopSection {
+	display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;                      
+    height:50px;    
+    margin-top:10px;
+}
+
+.headerTopLinks {    
+    width: 50px;
+    height: 20px;    
+    font-size: 11px;
+    margin: 10px;    
+    margin-right: 20px;
+    margin-top: auto;    
+    text-align: right;   
+}
+
+.headerBottomSection {
+	display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;                
+    height:70px;    
+    margin-bottom:20px;
+}
+
+.headerBottomLinks {	
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    margin: 10px;
+    font-size: 15px;
+    margin-top: auto;
+    text-align: right;     
+    vertical-align: bottom;         
+}
+
+.newPostButton {
+    /*adjust the roundness*/
+    border-radius: 4px;
+    moz-border-radius: 4px;
+    webkit-border-radius: 4px;
+    background-color: #ffa91b;  
+    height: 40px;     
+    text-align: center;
+}
