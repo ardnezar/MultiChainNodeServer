@@ -5,18 +5,32 @@
     <title>Welcome to DICoins</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+<link rel="stylesheet" type="text/css" href="dicoins.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>       
+	<script> 
+		$(function(){
+  			$("#diCoinsHeader").load("diCoinsHeader.html");   		
+		});
+	</script> 
     <style>
-        body        { padding-top:80px; }
+        body        { padding-top:0px; }
     </style>
 </head>
 <body>
-<div class="container">
 
-    <div class="jumbotron text-center">
-        <h1><span class="fa fa-lock"></span> Welcome to DICoins</h1>
+<div id="diCoinsHeader">
+</div>
+
+<div class="container">
+<br/>
+<br/>
+
+    <div class="text-center">
+<!--        <h1><span class="fa fa-lock"></span> Welcome to DICoins</h1> -->
 
         <p>Login or Register with your DICoins account:</p>
-
+<br/>
+<br/>
         <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Login</a>
         <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Register</a>
     </div>
