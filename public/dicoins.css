@@ -10,9 +10,19 @@
  	text-decoration: none;
 }*/
 
+h1 {
+   color:#52bdec;
+}
+
 body {	
     font-family: 'Helvetica Neue';
  	font-weight: medium;
+}
+
+.postTitle {
+
+   color:#52bdec;
+   font-weight:heavy;
 }
 
 .headerColumnContainer {
@@ -85,6 +95,70 @@ body {
     margin-top: auto;
     text-align: right;     
     vertical-align: bottom;         
+}
+
+.serviceContentContainer {    
+	display: -webkit-flex;
+    display: flex;    
+    -webkit-justify-content: space-around;
+    justify-content: space-around;    
+    -webkit-flex-direction: row;
+    flex-direction: row;                           
+}
+
+.serviceContentColumnContainer {    	    
+    -webkit-flex-direction: row;
+    flex-direction: row;               
+}
+
+.serviceContentTitle {            
+    font-size: 15px;             
+    text-align: left;   
+    color: #52bdec;	
+}
+
+.serviceContentPostBy {            
+    font-size: 13px;     
+    font-weight: bold;             
+    text-align: left;   
+    color: #7a7a7a;	
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.serviceContentPostHeaders {            
+    font-size: 13px;
+    font-weight: 400;               
+    text-align: left;   
+    color: #7a7a7a;
+    margin-top:10px;    	
+}
+
+.serviceContentDescription {            
+    font-size: 12px;                  
+    text-align: left;   
+    color: #7a7a7a;    
+    margin-bottom:10px;	
+}
+
+
+.servicePurchaseColumnContainer {    	    
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;    
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    margin-left: auto;        
+    margin-right:30px;
+}
+
+.serviceBuyButtonContainer {
+	margin-top:auto;
+}
+
+.servicePrice {
+	font-size: 14px;             
+    text-align: right;   
+    color: #52bdec;	
 }
 
 .newPostButton {
