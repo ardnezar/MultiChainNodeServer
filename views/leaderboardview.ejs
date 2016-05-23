@@ -14,7 +14,7 @@
 		});
 	</script> 
     
-    <style>
+<!--    <style>
         body        { padding-top:0px; word-wrap:break-word; }
         
         table {
@@ -37,7 +37,7 @@
 		  font-size: 11px;
 		  text-transform: uppercase;
 		}
-    </style>
+    </style> -->
 </head>
 
 <% function handleClick(evt) {
@@ -51,10 +51,9 @@
 <body>
 <div id="diCoinsHeader">
 </div>
-	<div class="container">
-		<div class="page-header text-center">
-	        <h1>Leaderboard</h1>
-	        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	<div class="container" style="width:500px">
+		<div class="page-header text-left">
+	        <h1>Leaderboard</h1> 
 	    </div>
 	    
 	    <!-- show any messages that come back with authentication -->
@@ -64,35 +63,25 @@
 	    	<div class="alert alert-danger text-center"><%= message %></div>
         <% } %>
 	    
-		<table align="center">
-			<thead>
-			    <tr>
-			      <th scope="col" colspan="6">User</th>
-			      <th scope="col" colspan="3">Points</th>
-			    </tr>
-		  	</thead>	    	    
-		    <% if (leaders.length) { %>	    	        
+	
+		<div class="leadersContainer">	    
+		<% if (leaders.length) { %>	    	        
 	    	        <tbody>
-				    <% leaders.forEach(function(leader) { %>
-				        <h3>
-				        <tr>
-				        	<% if (leader.firstname) { %>
-				        		<td colspan="6"><%= leader.firstname %> <%= leader.lastname %> </td>
-				        		<td colspan="3"><%= leader.points %> </td> 	
-			        		<% } else if(leader.username) { %>
-			        			<td colspan="6"><%= leader.username %></td>
-			        			<td colspan="3"><%= leader.points %> </td> 	
-			        		<% } %>
-				            	            
-				        </h3>
-				        </tr>
+				    <% leaders.forEach(function(leader, index) { %>
+					<div class="leadersEntry">
+						<div class="leadersName"><%=index+1 %>. 
+							<% if (leader.firstname) { %>
+                                                        	<%= leader.firstname %> <%= leader.lastname %>
+                                                	<% } else if(leader.username) { %>
+                                                        	<%= leader.username %>
+                                                	<% } %>
+						</div>
+						<div class="leadersPts"><%= leader.points %> pts</div>
+					</div>
 				    <% }); %>
-				    </tbody>
-				
 			<% } %>	
-		</table>
-		<div class="page-header text-center">
-		<p>Go back Home? <a href="/accounts">Home</a></p>
+
+
 		</div>
 	</div>
 </body>

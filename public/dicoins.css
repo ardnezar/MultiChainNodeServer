@@ -161,6 +161,43 @@ body {
     color: #52bdec;	
 }
 
+.leadersContainer {
+	display: -webkit-flex;
+    display: flex;    
+    -webkit-justify-content: space-around;
+    justify-content: space-around;    
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.leadersEntry {
+	display: -webkit-flex;
+    display: flex;    
+    -webkit-justify-content: space-around;
+    justify-content: space-around;    
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    font-size: 16px;
+    font-weight: 400; 
+    color: #777777;
+    height:40px;
+    line-height: 40px;
+}
+
+.leadersEntry:nth-child(odd) {
+    background: #f8f8f8;
+}
+
+.leadersName {
+    /*margin-left:250px;*/
+	
+}
+
+.leadersPts {
+	margin-left:auto;
+   /*margin-right:250px;*/
+}
+
 .newPostButton {
     /*adjust the roundness*/
     border-radius: 4px;
