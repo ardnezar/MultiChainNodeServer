@@ -50,11 +50,35 @@
 <div id="diCoinsHeader">
 </div>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-9 col-sm-12">
-				<h1>Services</h1>
+		<div class="grid">
+			<div class="row">
+				<div class="col-md-9 col-sm-12">
+					<div class="joblistingsbalanceHeaders">			
+					Welcome <%= user.local.firstname %>, You have 
+					<font color="green"> 
+	        		<% if (user.local.balance) { %>
+						        <%= user.local.balance %>
+						    <% } else {%>
+						    	0
+						   <% } %> dicoins
+				   	</font>
+				   	</div>
+				</div>
 			</div>
 		</div>
+		
+		<hr/>
+		
+		<div class="grid">
+			<div class="row">
+				<div class="col-md-9 col-sm-12">
+					<div class="joblistingsserviceHeaders">	
+					Services
+					</div>
+				</div>
+			</div>
+		</div>
+		
 		<hr/>
 
 
