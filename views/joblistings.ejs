@@ -54,15 +54,8 @@
 			<div class="col-md-9 col-sm-12">
 				<h1>Services</h1>
 			</div>
-
-			<div class="col-md-3" col-sm-12">
-				<h1>Activities</h1>
-			</div>
 		</div>
 		<hr/>
-
-		<div class="row">
-			<div class="col-md-9 col-sm-12">
 
 
 	    <!-- show any messages that come back with authentication -->
@@ -95,16 +88,15 @@
 					<div class="servicePrice">Price: <%= post.price %></div>
 			
 					<div class="serviceBuyButtonContainer">
-						<%
-                                                        actionUrl = "/buyjob?id="+post._id+"&seller="+post.address+"&sellerusername="+post.username;
+						<%actionUrl = "/buyjob?id="+post._id+"&seller="+post.address+"&sellerusername="+post.username;
                                                 %>
                                                 <%  if(user.local.username ===  post.username) { %>
                                                         <form name="f1" action=<%=actionUrl %>  method="post">
-                                                        <button type='submit' name='foo' value='Buy' class='button'>Delete</button>
+                                                        <button type='submit' name='foo' value='Buy' class='button'>DELETE NOW</button>
                                                 </form>
                                                 <% } else { %>
                                                         <form name="f1" action=<%=actionUrl %>  method="post">
-                                                        <button type='submit' name='foo' value='Buy' class='button'>Buy</button>
+                                                        <button type='submit' name='foo' value='Buy' class='button'>BUY NOW</button>
                                                 </form>
 						<% } %>
 					</div>

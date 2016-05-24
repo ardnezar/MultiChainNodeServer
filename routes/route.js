@@ -75,7 +75,7 @@ module.exports = function(app, passport) {
     // show the login form
     // process the login form
     app.post('/login', passport.authenticate('local-login', {
-    	successRedirect: '/accounts',
+    	successRedirect: '/listjobpost',
         failureRedirect: '/login',
         failureFlash : true 
     }));
@@ -158,7 +158,7 @@ module.exports = function(app, passport) {
     	console.log("Get headers:"+JSON.stringify(req.headers));
         res.render('jobpost', 
         	{ 
-        		message: 'Create new job post',
+        		message: '',
         		from: ''
         	    		
         	}); 
