@@ -39,7 +39,7 @@
 	        <div class="grid">
 	                <div class="accountHeader">My Account</div>
 	                <div class="accountElementsHeader"><%= user.local.firstname %> </div>
-	                <div class="accountElementsHeader"><strong>Balance: </strong>
+	                <div class="accountElementsHeader"><strong>Balance: 
 	        			<font color="green"> 
 		        		<% if (user.local.balance) { %>
 							        <%= user.local.balance %>
@@ -47,8 +47,9 @@
 							    	0
 							   <% } %> dicoins
 					   	</font>
+					   	</strong>
 					</div>
-                    <div class="accountElementsHeader"> <strong>Blockchain Public Key: </strong>
+                    <div class="accountElementsHeader"> Blockchain Public Key: 
 	                    
 	                    <% if (!user.local.address) { %>
 					        {} <br>
