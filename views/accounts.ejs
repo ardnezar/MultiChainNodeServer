@@ -21,18 +21,7 @@
 	<div id="diCoinsHeader">
 	</div>
 	<div class="container">
-	    <div class="page-header text-center">
-	        <h1><span class="fa fa-user"></span> Welcome <%= user.local.firstname %></h1>
-	        <h3> <strong>Balance: </strong>
-        			<font color="green"> 
-	        		<% if (user.local.balance) { %>
-						        <%= user.local.balance %>
-						    <% } else {%>
-						    	0
-						   <% } %> dicoins
-				   	</font>
-		   </h3>
-	    </div>
+	    
 	    
 	    <!-- show any messages that come back with authentication -->
 	    <% if (!user.local.validated) { %>
@@ -48,19 +37,27 @@
 	
 	        <!-- LOCAL INFORMATION -->
 	        <div class="grid">
-	                <h3><span class="fa fa-user"></span> My Account</h3>
-	
-	                    <p>
-	                        <!--<strong>id</strong>: <%= user._id %><br> -->
-	                        <strong>Email: </strong> <%= user.local.username %><br>
-	                        <strong>Blockchain Public Key: </strong>
-	                        
-	                        <% if (!user.local.address) { %>
-						        {} <br>
-						    <% } else { %> <%= user.local.address %> <br>
-						    
-					       	<% } %>					       	                    	                       	                        	                        	                        					   
-	                    </p>
+	                <div class="accountHeader">My Account</div>
+	                <div class="accountElementsHeader"><%= user.local.firstname %> </div>
+	                <div class="accountElementsHeader"><strong>Balance: </strong>
+	        			<font color="green"> 
+		        		<% if (user.local.balance) { %>
+							        <%= user.local.balance %>
+							    <% } else {%>
+							    	0
+							   <% } %> dicoins
+					   	</font>
+					</div>
+                    <div class="accountElementsHeader"> <strong>Blockchain Public Key: </strong>
+	                    
+	                    <% if (!user.local.address) { %>
+					        {} <br>
+					    <% } else { %> <%= user.local.address %> <br>
+					    
+				       	<% } %>
+			       	</div>	
+	                <hr/>
+	                
 
 	                    <p>Check your recent transactions? <a href= "/transactions" >Transaction history</a></p>
 	                    <p><a href= "/recent" >Activity Feed</a></p>

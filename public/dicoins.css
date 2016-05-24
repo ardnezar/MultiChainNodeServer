@@ -126,6 +126,22 @@ body {
     margin-bottom:10px;
 }
 
+.accountHeader {            
+    font-size: 20px;                 
+    text-align: left;   
+    color: #7a7a7a;	
+    margin-top:15px;
+    margin-bottom:20px;
+}
+
+.accountElementsHeader {            
+    font-size: 14px;                   
+    text-align: left;   
+    color: #7a7a7a;	
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
 .serviceContentPostHeaders {            
     font-size: 13px;
     font-weight: 400;               
