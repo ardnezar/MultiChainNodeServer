@@ -67,7 +67,7 @@
 				    <% posts.forEach(function(post) { %>
 				        <h3>
 				        <tr>
-				        	<td ><b><%= post.buyer %></b> sold  <%= post.title %> to <b><%= post.seller %></b> for <b><%= post.price %> dicoins </b>
+				        	<td ><b><%= post.seller %></b> sold  <%= post.title %> to <b><%= post.buyer %></b> for <b><%= post.price %> dicoins </b>
 				        		<% if (post.date) { %>
 				        			on <%= post.date %>  <br/>
                                 <% } %>
