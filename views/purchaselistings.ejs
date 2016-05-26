@@ -5,13 +5,13 @@
 
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="dicoins.css">
+   <link rel="stylesheet" type="text/css" href="dicoins.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>       
 	<script> 
 		$(function(){
   			$("#diCoinsHeader").load("diCoinsHeader.html");   		
 		});
-	</script>     
+	</script> 
     <style>
         body        { padding-top:0px; word-wrap:break-word; }
         
@@ -50,51 +50,45 @@
 <div id="diCoinsHeader">
 </div>
 	<div class="container">
-		<div class="page-header text-center">
-	        <h1>Purchase history</h1>
-	    </div>
-	    
-	    <!-- show any messages that come back with authentication -->
-	    <% if (message.length > 0 && messageType <= 0 ) { %>
-	        <div class="alert alert-success text-center"><%= message %></div>
-	    <% } else if (message.length > 0) { %>
-	    	<div class="alert alert-danger text-center"><%= message %></div>
-        <% } %>
-	    
-		<table align="center">
-			<thead>
-			    <tr>
-			      <th scope="col" colspan="3">Purchased On</th>
-			      <th scope="col" colspan="3">Sold By</th>
-			      <th scope="col" colspan="3">Title</th>
-			      <th scope="col" colspan="3">Description</th>
-			      <th scope="col" colspan="3">Price</th>
-			    </tr>
-		  	</thead>	    	    
-		    <% if (posts.length) { %>	    	        
-	    	        <tbody>
-				    <% posts.forEach(function(post) { %>
-				        <h3>
-				        <tr>
-				        	<% if (post.date) { %>				        		
-				        		<td colspan="3"><%= post.date %></td>
-				        	<% } else { %>
-				        		<td colspan="3"> </td>
-				        	<% } %>
-				        	<td colspan="3"><%= post.seller %> </td>	
-				            <td colspan="3"><%= post.title %> </td> 
-				            <td colspan="3"><%= post.description %> </td> 
-				            <td colspan="3"><%= post.price %> </td>				            
-				        </h3>
-				        </tr>
-				    <% }); %>
-				    </tbody>
-				
-			<% } %>	
-		</table>
-		<div class="page-header text-center">
-		<p>Go back Home? <a href="/listjobpost">Home</a></p>
+
+		
+		<div class="grid">
+			<div class="row">
+				<div class="col-md-9 col-sm-12">
+					<div class="accountHeader">	
+					Services Purchased
+					</div>
+				</div>
+			</div>
 		</div>
+		
+		<hr/>
+		
+		<% if (posts.length) { %>
+                <% posts.forEach(function(post) { %>
+				 	<div class="serviceContentContainer">
+						<div class="serviceContentColumnContainer">
+							<div class="accountElementsHeader"><%= post.title %></div>	
+							<div class="accountElementsHeader">
+								<% if (post.postedOn) { %>
+		                              Posted: <%= post.postedOn %>  <br/>
+		                        <% } else { %>
+		                        <% } %>
+							</div>
+							<div class="accountElementsHeader">Sale Price: <%= post.price %> Lab Coins</div>
+							<div class="accountElementsHeader">
+						 		Purchased From: <%=post.seller%><br/>
+							</div>
+							<div class="accountElementsHeader">Description:</div>
+							<div class="serviceContentDescription"><%= post.description %></div>			
+						</div>						
+					</div>	
+					<hr/>	
+                <% }); %>
+        <% } %>
+
+
+        
 	</div>
 </body>
 </html>
