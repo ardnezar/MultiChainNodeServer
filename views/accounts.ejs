@@ -25,12 +25,14 @@
 	    
 	    <!-- show any messages that come back with authentication -->
 	    <% if (!user.local.validated) { %>
-	        <div class="alert alert-danger">Account validation in progress. This should take between 12-24 hours. You will have minimal access to your account during this time.</div>
+	        <div class="alert alert-warning"><center>Account validation in progress. This should take between 12-24 hours. You will have minimal access to your account during this time.</center></div>
 	    <% } %>
 	    
 	    <!-- show any messages that come back with authentication -->
 	    <% if (message.length > 0) { %>
-	        <div class="alert alert-success"><%= message %></div>
+	    	<div class ="accountsmessagecontainer">
+	        	<div class="alert alert-warning"><center><%= message %></center></div>
+	        </div>
 	    <% } %>
 	
 	    <div class="row">

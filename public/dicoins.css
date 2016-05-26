@@ -214,7 +214,19 @@ body {
 }
 
 .serviceBuyButtonContainer {
-	margin-top:40px;
+	margin-top: 20px;
+	float:right;
+}
+
+.jobpostedButtonContainer {
+	margin-top: 20px;
+}
+.accountsmessagecontainer
+{
+  width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .servicePrice {

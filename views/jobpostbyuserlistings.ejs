@@ -78,11 +78,11 @@
 							<div class="accountElementsHeader">Sale Price: <%= post.price %> Lab Coins</div>
 							<div class="accountElementsHeader">Description:</div>
 							<div class="serviceContentDescription"><%= post.description %></div>
-							<div class="serviceBuyButtonContainer">
+							<div class="jobpostedButtonContainer">
 								<%actionUrl = "/buyjob?id="+post._id+"&seller="+post.address+"&sellerusername="+post.username;
 		                                                %>
                                     <form name="f1" action=<%=actionUrl %>  method="post">
-                                            <button type='submit' name='foo' value='Buy' class='button'>DELETE</button>
+                                            <input type="image" src="delete.png" alt="Submit">
                                     </form>
 							</div>			
 						</div>						
