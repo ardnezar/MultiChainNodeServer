@@ -48,8 +48,7 @@ body {
     -webkit-justify-content: flex-end;
     justify-content: flex-end;    
     -webkit-flex-direction: column;
-    flex-direction: column;
-    width: 800px;       
+    flex-direction: column;       
     height:120px;        
     margin-right:20px;
 }

@@ -27,6 +27,13 @@ module.exports = function(app, passport) {
     var gettrans = require('../lib/gettransactions')
 
     app.get('/transactions', isLoggedIn, gettrans.gettransactions);
+ 
+    
+    
+    var gettransForId = require('../lib/gettransactionsForId')
+
+    app.get('/transactionsforid', isLoggedIn, gettransForId.gettransactions);
+    
     
     //Show activity feed
     var getrecent = require('../lib/getrecenttransactions')

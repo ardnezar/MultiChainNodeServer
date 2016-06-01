@@ -169,15 +169,19 @@
 							               '<div class="activityFeedContent">'+ 
 							               '<b>' + objs[r].seller.toString() + '</b>' + 
 							               ' sold ' + objs[r].title.toString() +' to ' + 
-							               '<b>' + objs[r].buyer.toString() + '</b>' +
+							               '<b>' + objs[r].buyer.toString() + '</b>' + ' for ' +
+							               '<b>' + objs[r].price + ' labcoins'+'</b>' +
 							           	   '</div>';
 							        if(typeof objs[r].txId !== "undefined") {
-							        	html += '<div class="activityFeedContent">'+ 
+							        	var actionUrl = "/transactionsforid?txid="+objs[r].txId;
+							        	html += '<div class="activityFeedContent">'+							        	
+							        	   '<a href="' + actionUrl + '">' +
 							               '<b>' + 'TxId:' + '</b>' +
-							                objs[r].txId.toString() +
+							                objs[r].txId.toString() + '</a>' +
 							           	   '</div>'; 
 							        	
 							        }
+							        
 							        html += '<hr/>';   	   
 							    }
 							    
