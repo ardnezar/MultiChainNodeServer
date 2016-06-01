@@ -15,6 +15,8 @@ var jobTransactionSchema = mongoose.Schema({
 	title     		: String,
     description     : String,
     price      		: Number,
+    txId			: String,
+    blockHash		: String,
     date			: { type: Date }
 });
 
