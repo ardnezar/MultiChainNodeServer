@@ -173,7 +173,7 @@
 							               '<b>' + objs[r].price + ' labcoins'+'</b>' +
 							           	   '</div>';
 							        if(typeof objs[r].txId !== "undefined") {
-							        	var actionUrl = "/transactionsforid?txid="+objs[r].txId;
+							        	var actionUrl = "/transactionsforid?id="+objs[r]._id;
 							        	html += '<div class="activityFeedContent">'+							        	
 							        	   '<a href="' + actionUrl + '">' +
 							               '<b>' + 'TxId:' + '</b>' +
