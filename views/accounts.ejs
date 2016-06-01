@@ -110,24 +110,9 @@
 	                <hr/>
 	                <div id="detailedcontent">
     				</div>
-	                	<% if (!flag) { %>
-	                		<script>
-		                		$(document).ready(function() {
-								   $.ajax({
-								       url: "/detailedaccount"
-								   }).then(function(data) {
-								      console.log(data);
-								      var obj = jQuery.parseJSON(data);
-								   });
-								});						
-							</script>														
-	                	<% } else {%>		                    
-		                    <p>Check your recent transactions? <a href= "/transactions" >Transaction history</a></p>
-	                    	<p><a href= "/recent" >Activity Feed</a></p>
-	                    	<p><a href= "/listcurrentjobpost" >My Posts</a></p>
-	                    	<p><a href= "/listjobsaleshistory" >Services Sold</a></p>
-	                    	<p><a href= "/listjobpurchasehistory" >Services Purchased</a></p>                  		                    		                    		                    		                    		                    
-	                    <% } %>
+                	<p><a href= "/listcurrentjobpost" >My Posts</a></p>
+                	<p><a href= "/listjobsaleshistory" >Services Sold</a></p>
+                	<p><a href= "/listjobpurchasehistory" >Services Purchased</a></p>  
             </div>
 	
 	    </div>
