@@ -1,0 +1,72 @@
+<!-- views/accounts.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" type="text/css" href="dicoins.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+	<script> 
+		$(function(){
+  			$("#diCoinsHeader").load("diCoinsHeader.html");   		
+		});
+	</script>  
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">    
+</head>
+
+<body>
+	<div id="diCoinsHeader">
+	</div>
+	<div class="container">
+	    
+	    
+	    <!-- show any messages that come back with authentication -->
+	    <% if (!user.local.validated) { %>
+	        <div class="alert alert-warning"><center>Account validation in progress. This should take between 12-24 hours. You will have minimal access to your account during this time.</center></div>
+	    <% } %>
+	    
+	    <!-- show any messages that come back with authentication -->
+	    <% if (message.length > 0) { %>
+	    	<div class ="accountsmessagecontainer">
+	        	<div class="alert alert-warning"><center><%= message %></center></div>
+	        </div>
+	    <% } %>
+	
+	    <div class="row">
+	
+	        <!-- LOCAL INFORMATION -->
+	        <div class="grid">
+	                <div class="accountHeader">My Account</div>
+	                <div class="accountElementsHeader"><%= user.local.firstname %> </div>
+	                <div class="accountElementsHeader"><strong>Balance: 
+	        			<font color="green"> 
+		        		<% if (user.local.balance) { %>
+							        <%= user.local.balance %>
+							    <% } else {%>
+							    	0
+							   <% } %> dicoins
+					   	</font>
+					   	</strong>
+					</div>
+                    <div class="accountElementsHeader"> Blockchain Public Key: 
+	                    
+	                    <% if (!user.local.address) { %>
+					        {} <br>
+					    <% } else { %> <%= user.local.address %> <br>
+					    
+				       	<% } %>
+			       	</div>	
+	                <hr/>
+	                <p>Check your recent transactions? <a href= "/transactions" >Transaction history</a></p>
+                	<p><a href= "/recent" >Activity Feed</a></p>
+                	<p><a href= "/listcurrentjobpost" >My Posts</a></p>
+                	<p><a href= "/listjobsaleshistory" >Services Sold</a></p>
+                	<p><a href= "/listjobpurchasehistory" >Services Purchased</a></p>  
+            </div>
+	
+	    </div>
+	
+	</div>
+</body>
+</html>

@@ -69,71 +69,124 @@
 		
 		<hr/>
 		
-		<div class="grid">
-			<div class="row">
-				<div class="col-md-9 col-sm-12">
-					<div class="accountHeader">	
-					Services
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<hr/>
-
-
 	    <!-- show any messages that come back with authentication -->
 	    <% if (message.length > 0 && messageType <= 0 ) { %>
 	        <div class="alert alert-success text-center"><%= message %></div>
 	    <% } else if (message.length > 0) { %>
 	    	<div class="alert alert-danger text-center"><%= message %></div>
         <% } %>
-
-
-                    <% if (posts.length) { %>
-                                    <% posts.forEach(function(post) { %>
-			 <div class="serviceContentContainer">
-				<div class="serviceContentColumnContainer">
-					<div class="serviceContentTitle"><%= post.title %></div>	
-					<div class="serviceContentPostBy">
-						 By: <%=post.username%><br/>
-					</div>
-					<div class="serviceContentPostHeaders">
-						<% if (post.postedOn) { %>
-                                                      Posted: <%= post.postedOn %>  <br/>
-                                                <% } else { %>
-                                                <% } %>
-					</div>
-					<div class="serviceContentPostHeaders">Description:</div>
-					<div class="serviceContentDescription"><%= post.description %></div>			
-				</div>
 		
-				<div class="servicePurchaseColumnContainer">
-					<div class="servicePrice">Price: <%= post.price %></div>
-			
-					<div class="serviceBuyButtonContainer">
-						<%actionUrl = "/buyjob?id="+post._id+"&seller="+post.address+"&sellerusername="+post.username;
-                                                %>
-                                                <%  if(user.local.username ===  post.username) { %>
-                                                        <form name="f1" action=<%=actionUrl %>  method="post">
-                                                        <input type="image" src="delete.png" alt="Submit">
-                                                </form>
-                                                <% } else { %>
-                                                        <form name="f1" action=<%=actionUrl %>  method="post">
-                                                        <input type="image" src="buy-now.png" alt="Submit">
-                                                	</form>
-												<% } %>
+		<div class="serviceTopLevelContainer">
+		
+			<!--- Services column starts here -->
+			<div class="serviceTopLevelColumnContainer">		
+						
+			<div class="grid">
+				<div class="row">
+					<div class="col-md-9 col-sm-12">
+						<div class="accountHeader">	
+						Services
+						</div>
 					</div>
-				</div>		
-			
+				</div>
 			</div>
-			<hr/>	
-                                    <% }); %>
-                        <% } %>
-		</div>
-		<div class="col-md-3 col-sm-12">
+			
+			<hr/>
+	
+	
+	        <% if (posts.length) { %>
+	                <% posts.forEach(function(post) { %>
+						 <div class="serviceContentContainer">
+							<div class="serviceContentColumnContainer">
+								<div class="serviceContentTitle"><%= post.title %></div>	
+								<div class="serviceContentPostBy">
+									 By: <%=post.username%><br/>
+								</div>
+								<div class="serviceContentPostHeaders">
+									<% if (post.postedOn) { %>
+                                          Posted: <%= post.postedOn %>  <br/>
+                                    <% } else { %>
+                                    <% } %>
+								</div>
+								<div class="serviceContentPostHeaders">Description:</div>
+								<div class="serviceContentDescription"><%= post.description %></div>			
+							</div>
+					
+							<div class="servicePurchaseColumnContainer">
+								<div class="servicePrice">Price: <%= post.price %></div>
+						
+								<div class="serviceBuyButtonContainer">
+									<%actionUrl = "/buyjob?id="+post._id+"&seller="+post.address+"&sellerusername="+post.username;
+                                    %>
+                                    <%  if(user.local.username ===  post.username) { %>
+                                            <form name="f1" action=<%=actionUrl %>  method="post">
+                                            <input type="image" src="delete.png" alt="Submit">
+                                    </form>
+                                    <% } else { %>
+                                            <form name="f1" action=<%=actionUrl %>  method="post">
+                                            <input type="image" src="buy-now.png" alt="Submit">
+                                    	</form>
+									<% } %>
+								</div>
+							</div>		
+						
+						</div>
+						<hr/>	
+	                <% }); %><!-- Loop ends here -->
+	            <% } %> 	            	            
+	            </div>
+            <!--- Services column ends here -->
+	            
+            <!--- Activity feed column starts here -->
+			<div class="serviceTopLevelActivityFeedContainer">		
+						
+				<div class="accountHeader">	
+					Activity feed
+				</div>
+				
+				<hr/>
+				
+				<div id="activityfeed"></div>
+		
+				<script>
+	        		$(document).ready(function() {
+					   $.ajax({
+					       url: "/recent"
+					   }).then(function(data) {
+				      		console.log(data);
+					      	var objs = jQuery.parseJSON(data);
+					      	console.log("Data:"+data);
+					      	var out = "";
+    						var i,r;
+					      	<!-- Create activity feed table -->
+						     
+						    if(typeof objs !== "undefined") {				
+						    	var rows = objs.length;
+    						    var html = "";    						        						   
+    						    
+							    for (r = 0; r < rows; r++) {
+									html +=  
+							               '<div class="activityFeedContent">'+ '<b>' + objs[r].seller.toString() +
+							               '</b>' + ' sold ' + objs[r].title.toString() +' to ' + 
+							               '<b>' + objs[r].buyer.toString() + '</b>' +
+							           	   '</div>'+ '<hr/>';
+							    }
+							    
+							    $("#activityfeed").append(html);
+						    }
+						    
+						    <!-- document.getElementById("activityfeed").innerHTML = out; -->
+		            		<!-- Activity feed table building ends here -->				      				      				      				      				      				      				     				    
+					   });
+					});						
+					</script>
+		            	            
+	            </div>
+	            <!--- Services column ends here -->
+	            
+	                        
+            </div>
 
-		</div>
-	</div>
+	</div> <!-- Top level container div ends her -->
 </body>
 </html>

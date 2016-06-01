@@ -15,23 +15,10 @@ module.exports = function(app, passport) {
 	var getAccounts = require('../lib/getAccountInfo')	
 	
     app.get('/accounts', isLoggedIn, getAccounts.getaccountinfo);
-    		
-    		
-//    		function(req, res) {
-//    	console.log("Username..accounts:"+req.user);
-//    	console.log("Get accounts:"+JSON.stringify(req.headers));
-//		console.log("Get accounts req:"+JSON.stringify(req.headers));
-//		console.log("Get accounts res:"+JSON.stringify(res.headers));
-////        res.render('accounts.ejs', {
-////        	message: '',
-////            user : req.user // get the user out of session and pass to template            
-////        });
-////    	user = req.user;
-////    	res.send(JSON.stringify(user));
-//		
-//    }
-    
-//    );
+	
+	var getDetailedAccounts = require('../lib/getDetailedAccountInfo')	
+	
+    app.get('/detailedaccount', isLoggedIn, getDetailedAccounts.getaccountinfo);    		    	
 
     // =====================================
     // Get transactions ========

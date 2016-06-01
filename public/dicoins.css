@@ -87,7 +87,7 @@ body {
 }
 
 .headerBottomLinks {	
-    width: 100px;
+    width: 150px;
     height: 40px;
     line-height: 40px;
     margin: 10px;
@@ -104,6 +104,31 @@ body {
     justify-content: flex-start;    
     -webkit-flex-direction: row;
     flex-direction: row;                           
+}
+
+.serviceTopLevelContainer {    
+	display: -webkit-flex;
+    display: flex;    
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;                         
+}
+
+.serviceTopLevelColumnContainer {    	    
+    -webkit-flex-direction: column;
+    width: 70%;
+    flex-direction: column;      
+    margin-left:10px;
+    border-style: solid;
+    border-width: 1px;            
+}
+
+.serviceTopLevelActivityFeedContainer {    	    
+    -webkit-flex-direction: column;
+    width: 30%;
+    flex-direction: column;          
+    border-style: solid;
+    border-width: 1px;              
 }
 
 
@@ -124,6 +149,13 @@ body {
 .serviceContentTitle {            
     font-size: 15px;             
     text-align: left;   
+    color: #777777;	
+}
+
+.activityFeedContent {            
+    font-size: 12px;             
+    text-align: left;   
+    margin-left: 5px;
     color: #777777;	
 }
 
@@ -170,6 +202,7 @@ body {
   	font-size: 20px;
   	color: #52bdec;
   	margin-top:10px;
+  	margin-left:10px;
 }
 
 .accountElementsHeader {            

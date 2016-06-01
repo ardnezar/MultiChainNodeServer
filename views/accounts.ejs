@@ -9,14 +9,62 @@
 		$(function(){
   			$("#diCoinsHeader").load("diCoinsHeader.html");   		
 		});
+	</script>
+		
+	<script>
+		function loadAccountDetails() {	
+		  	var xmlHttp = new XMLHttpRequest();
+		  	console.log('Inside loadAccountDetails1');
+		    xmlHttp.open( "GET", "/detailedaccount", true);
+		    console.log('Inside loadAccountDetails2');
+		    
+		    xmlHttp.onreadystatechange = function (oEvent) {
+		    	console.log('Inside loadAccountDetails5');  
+			    if (xmlHttp.status === 200) {  
+			          console.log(xmlHttp.responseText)  
+		        } else {  
+		           console.log("Error", xmlHttp.statusText);  
+		        }
+		            
+			};
+			console.log('Inside loadAccountDetails3');
+		    xmlHttp.send();    
+		    console.log('Inside loadAccountDetails4');	    	    
+    	}
+
 	</script>  
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <style>
-        body        { padding-top:0px; word-wrap:break-word; } 
+        body        { padding-top:0px; word-wrap:break-word; }
+        .loader {
+		  border: 16px solid #f3f3f3;
+		  border-radius: 50%;
+		  border-top: 16px solid blue;
+		  border-bottom: 16px solid blue;
+		  width: 120px;
+		  height: 120px;
+		  -webkit-animation: spin 2s linear infinite;
+		  animation: spin 2s linear infinite;
+		  margin-top: 20px;
+		  margin-bottom: 20px;
+		}
+		
+		@-webkit-keyframes spin {
+		  0% { -webkit-transform: rotate(0deg); }
+		  100% { -webkit-transform: rotate(360deg); }
+		}
+		
+		@keyframes spin {
+		  0% { transform: rotate(0deg); }
+		  100% { transform: rotate(360deg); }
+		} 
     </style>
 </head>
+
+
+
 <body>
 	<div id="diCoinsHeader">
 	</div>
@@ -60,13 +108,26 @@
 				       	<% } %>
 			       	</div>	
 	                <hr/>
-	                
-
-	                    <p>Check your recent transactions? <a href= "/transactions" >Transaction history</a></p>
-	                    <p><a href= "/recent" >Activity Feed</a></p>
-	                    <p><a href= "/listcurrentjobpost" >My Posts</a></p>
-	                    <p><a href= "/listjobsaleshistory" >Services Sold</a></p>
-	                    <p><a href= "/listjobpurchasehistory" >Services Purchased</a></p>
+	                <div id="detailedcontent">
+    				</div>
+	                	<% if (!flag) { %>
+	                		<script>
+		                		$(document).ready(function() {
+								   $.ajax({
+								       url: "/detailedaccount"
+								   }).then(function(data) {
+								      console.log(data);
+								      var obj = jQuery.parseJSON(data);
+								   });
+								});						
+							</script>														
+	                	<% } else {%>		                    
+		                    <p>Check your recent transactions? <a href= "/transactions" >Transaction history</a></p>
+	                    	<p><a href= "/recent" >Activity Feed</a></p>
+	                    	<p><a href= "/listcurrentjobpost" >My Posts</a></p>
+	                    	<p><a href= "/listjobsaleshistory" >Services Sold</a></p>
+	                    	<p><a href= "/listjobpurchasehistory" >Services Purchased</a></p>                  		                    		                    		                    		                    		                    
+	                    <% } %>
             </div>
 	
 	    </div>
