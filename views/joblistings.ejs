@@ -60,7 +60,7 @@
 						        <%= user.local.balance %>
 						    <% } else {%>
 						    	0
-						   <% } %> labcoins !!!
+						   <% } %> LabCoins !!!
 				   	</font>
 				   	</div>
 				</div>
@@ -84,7 +84,7 @@
 			<div class="grid">
 				<div class="row">
 					<div class="col-md-9 col-sm-12">
-						<div class="accountHeader">	
+						<div class="serviceHeader">	
 						Services
 						</div>
 					</div>
@@ -98,17 +98,16 @@
 	                <% posts.forEach(function(post) { %>
 						 <div class="serviceContentContainer">
 							<div class="serviceContentColumnContainer">
-								<div class="serviceContentTitle"><%= post.title %></div>	
-								<div class="serviceContentPostBy">
-									 By: <%=post.username%><br/>
+								<div class="accountElementsHeader"><%= post.title %></div>	
+								<div class="accountElementsHeader">
+									 Posted By: <%=post.username%>
 								</div>
-								<div class="serviceContentPostHeaders">
+								<div class="accountElementsHeader">
 									<% if (post.postedOn) { %>
-                                          Posted: <%= post.postedOn %>  <br/>
-                                    <% } else { %>
+                                          Posted: <%= post.postedOn %>
                                     <% } %>
 								</div>
-								<div class="serviceContentPostHeaders">Description:</div>
+								<div class="accountElementsHeader">Description:</div>
 								<div class="serviceContentDescription"><%= post.description %></div>			
 							</div>
 					
@@ -140,7 +139,7 @@
             <!--- Activity feed column starts here -->
 			<div class="serviceTopLevelActivityFeedContainer">		
 						
-				<div class="accountHeader">	
+				<div class="serviceHeader">	
 					Activity feed
 				</div>
 				
@@ -148,7 +147,9 @@
 				
 				<div id="activityfeed"></div>
 		
+				
 				<script>
+					<!-- Document ready section starts here -->
 	        		$(document).ready(function() {
 					   $.ajax({
 					       url: "/recent"
@@ -170,13 +171,13 @@
 							               '<b>' + objs[r].seller.toString() + '</b>' + 
 							               ' sold ' + objs[r].title.toString() +' to ' + 
 							               '<b>' + objs[r].buyer.toString() + '</b>' + ' for ' +
-							               '<b>' + objs[r].price + ' labcoins'+'</b>' +
+							               '<b>' + objs[r].price + ' LabCoins'+'</b>' +
 							           	   '</div>';
 							        if(typeof objs[r].txId !== "undefined") {
 							        	var actionUrl = "/transactionsforid?id="+objs[r]._id;
 							        	html += '<div class="activityFeedContent">'+							        	
 							        	   '<a href="' + actionUrl + '">' +
-							               '<b>' + 'TxId:' + '</b>' +
+							               '<b>' + 'Transaction: ' + '</b>' +
 							                objs[r].txId.toString() + '</a>' +
 							           	   '</div>'; 
 							        	
@@ -185,14 +186,13 @@
 							        html += '<hr/>';   	   
 							    }
 							    
-							    $("#activityfeed").append(html);
+							    $("#activityfeed").append(html);							    							   							  							    							    							    							    							    							    							    							    							    							    							    							    							   
 						    }
-						    
-						    <!-- document.getElementById("activityfeed").innerHTML = out; -->
-		            		<!-- Activity feed table building ends here -->				      				      				      				      				      				      				     				    
-					   });
-					});						
-					</script>
+		            		<!-- Activity feed table building ends here -->
+		            						      				      				      				      				      				      				     				    
+					   }); <!---Ajax call for /recent ends here -->
+					});	<!---document ready function ends here -->				
+				</script>
 		            	            
 	            </div>
 	            <!--- Services column ends here -->

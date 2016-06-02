@@ -32,7 +32,104 @@
 		    console.log('Inside loadAccountDetails4');	    	    
     	}
 
-	</script>  
+	</script>
+	
+	<script>
+		function loadPurchaseHistory() {
+		   $.ajax({
+		       url: "/listjobpurchasehistory"
+		   }).then(function(data) {
+		   		if(data.length > 0) {
+		      		console.log(data);
+			      	var posts = jQuery.parseJSON(data);
+			      	console.log("Data:"+data);
+			      	var out = "";
+					var i,r;
+			      	<!-- Create Submitted posts table -->							     
+				    if(typeof posts !== "undefined") {								
+				    	var rows = posts.length;
+					    var html = "";
+					    html +=  
+					               '<div class="accountDetailedHeader">'+
+					    	    	'Services Purchased' +    						        						   
+					    			'</div>';
+						html += '<hr/>';
+																									    						    		
+					    for (i = 0; i < rows; i++) {
+							html += '<div class="serviceContentContainer">' +
+								'<div class="serviceContentColumnContainer">' +
+								'<div class="accountElementsHeader">Title: '  + posts[i].title + '</div>' +
+								'<div class="accountElementsHeader">';
+								if (posts[i].date !== "undefined") {
+	                              html += 'Posted: ' + posts[i].date + '<br/>';
+	                        	}
+	                        
+								html += '</div>' +
+								'<div class="accountElementsHeader">Sale Price: ' + posts[i].price + ' LabCoins' + '</div>' +
+								'<div class="accountElementsHeader">Description:</div>' +
+								'<div class="serviceContentDescription">' + posts[i].description + '</div>' +														
+								'</div>' +						
+								'</div>' +	
+								'<hr/>';   	   
+					    }
+					    
+					    $("#detailedcontent").append(html);							    							   							  							    							    							    							    							    							    							    							    							    							    							    							    							   
+			    	}
+		    	}							    
+        		<!-- Submitted posts table building ends here -->			            					            					            					            					            						      				      				      				      				      				      				     				    
+		   }); <!---Ajax call for /listcurrentjobpost ends here -->
+		}
+	</script> 
+	
+	<script>
+		function loadSalesHistory() {
+		   $.ajax({
+		       url: "/listjobsaleshistory"
+		   }).then(function(data) {
+		   		if(data.length > 0) {
+		      		console.log(data);
+			      	var posts = jQuery.parseJSON(data);
+			      	console.log("Data:"+data);
+			      	var out = "";
+					var i,r;
+			      	<!-- Create Submitted posts table -->							     
+				    if(typeof posts !== "undefined") {								
+				    	var rows = posts.length;
+					    var html = "";
+					    html +=  
+					               '<div class="accountDetailedHeader">'+
+					    	    	'Services Sold' +    						        						   
+					    			'</div>';
+						html += '<hr/>';
+																									    						    		
+					    for (i = 0; i < rows; i++) {
+							html += '<div class="serviceContentContainer">' +
+								'<div class="serviceContentColumnContainer">' +
+								'<div class="accountElementsHeader">Title: ' + posts[i].title + '</div>' +	
+								'<div class="accountElementsHeader">';
+								if (posts[i].date!== "undefined") {
+	                              html += 'Posted: ' + posts[i].date + '<br/>';
+	                        	}
+	                        
+								html += '</div>' +
+								'<div class="accountElementsHeader">Sale Price: ' + posts[i].price + 'LabCoins' + '</div>' +
+								'<div class="accountElementsHeader">Description:</div>' +
+								'<div class="serviceContentDescription">' + posts[i].description + '</div>' +														
+								'</div>' +						
+								'</div>' +	
+								'<hr/>';   	   
+					    }
+					    
+					    $("#detailedcontent").append(html);							    							   							  							    							    							    							    							    							    							    							    							    							    							    							    							   
+				    }
+			    }			    
+			    loadPurchaseHistory();							    
+        		<!-- Services sales history table building ends here -->			            					            					            					            					            						      				      				      				      				      				      				     				    
+		   }); <!---Ajax call for /listjobsaleshistory ends here -->
+		}
+	</script>
+	
+	 
 
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -95,7 +192,7 @@
 							        <%= user.local.balance %>
 							    <% } else {%>
 							    	0
-							   <% } %> labcoins
+							   <% } %> LabCoins
 					   	</font>
 					   	</strong>
 					</div>
@@ -108,11 +205,62 @@
 				       	<% } %>
 			       	</div>	
 	                <hr/>
-	                <div id="detailedcontent">
-    				</div>
-                	<p><a href= "/listcurrentjobpost" >My Posts</a></p>
-                	<p><a href= "/listjobsaleshistory" >Services Sold</a></p>
-                	<p><a href= "/listjobpurchasehistory" >Services Purchased</a></p>  
+	                <div id="detailedcontent"></div>	                               	
+                	
+	                <script>
+						<!-- Document ready section starts here -->
+		        		$(document).ready(function() {
+						   $.ajax({
+						       url: "/listcurrentjobpost"
+						   }).then(function(data) {
+						   		if(data.length > 0) {
+							      	var posts = jQuery.parseJSON(data);
+							      	console.log("Data:"+data);
+							      	var out = "";
+		    						var i,r;
+							      	<!-- Create Submitted posts table -->							     
+								    if(typeof posts !== "undefined") {								
+								    	var rows = posts.length;
+		    						    var html = "";
+		    						    html +=  
+									               '<div class="accountDetailedHeader">'+
+		    						    	    	'My Posts' +    						        						   
+		    						    			'</div>';
+										html += '<hr/>';
+																													    						    		
+									    for (i = 0; i < rows; i++) {
+											html += '<div class="serviceContentContainer">' +
+												'<div class="serviceContentColumnContainer">' +
+												'<div class="accountElementsHeader">Title: '  + posts[i].title  +	'</div>' +
+												'<div class="accountElementsHeader">';
+												if (posts[i].postedOn!== "undefined") {
+					                              html += 'Date Posted: ' + posts[i].postedOn + '<br/>';
+					                        	}
+					                        
+												html += '</div>' +
+												'<div class="accountElementsHeader">Sale Price: ' + posts[i].price + ' LabCoins' + '</div>' +
+												'<div class="accountElementsHeader">Description:</div>' +
+												'<div class="serviceContentDescription">' + posts[i].description + '</div>' +
+												'<div class="jobpostedButtonContainer">';
+												var actionUrl = '/buyjob?id='+posts[i]._id+'&amp;seller='+posts[i].address+'&amp;sellerusername='+posts[i].username;													                                               
+	                                    		html += '<form name="f1" action='+ actionUrl +  ' method="post">' +
+	                                            			'<input type="image" src="delete.png" alt="Submit">' +
+	                                    					'</form>';
+												html += '</div>' +			
+												'</div>' +						
+												'</div>' +	
+												'<hr/>';   	   
+									    }
+									    
+									    $("#detailedcontent").append(html);							    							   							  							    							    							    							    							    							    							    							    							    							    							    							    							   
+								    }							    
+				            		<!-- Submitted posts table building ends here -->			            		
+			            		}
+			            		loadSalesHistory();
+			            					            					            					            					            					            						      				      				      				      				      				      				     				    
+						   }); <!---Ajax call for /listcurrentjobpost ends here -->
+						});	<!---document ready function ends here -->				
+					</script>
             </div>
 	
 	    </div>

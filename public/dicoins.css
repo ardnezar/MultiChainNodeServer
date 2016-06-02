@@ -42,6 +42,13 @@ body {
     margin-right: auto;
 }
 
+.right {
+    position: absolute;
+    right: 0px;
+    width: auto;
+    padding: 10px;
+}
+
 .headerLinksContainer {    
 	display: -webkit-flex;
     display: flex;    
@@ -119,7 +126,8 @@ body {
     flex-direction: column;      
     margin-left:10px;
     border-style: solid;
-    border-width: 1px;            
+    border-width: 1px;
+    border-color: #efefef;            
 }
 
 .serviceTopLevelActivityFeedContainer {    	    
@@ -127,13 +135,15 @@ body {
     width: 30%;
     flex-direction: column;          
     border-style: solid;
-    border-width: 1px;              
+    border-width: 1px;
+    border-color: #efefef;
+    margin-left :1px;              
 }
 
 
 .serviceContentColumnContainer {    	    
     -webkit-flex-direction: column;
-    width: 400px;
+    width: 70%;
     flex-direction: column;      
     margin-left:30px;              
 }
@@ -141,7 +151,7 @@ body {
 .servicePurchaseColumnContainer {    	      
     -webkit-flex-direction: column;
     flex-direction: column;
-    margin-left: 400px;        
+    width: 30%        
     margin-right:30px;
 }
 
@@ -154,7 +164,8 @@ body {
 .activityFeedContent {            
     font-size: 12px;             
     text-align: left;   
-    margin-left: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
     color: #777777;	
 }
 
@@ -203,8 +214,25 @@ body {
   	margin-top:10px;
 }
 
+.accountDetailedHeader {                
+  	object-fit: contain;
+  	font-family: HelveticaNeue-Bold;
+  	font-size: 15px;
+  	color: #52bdec;
+  	margin-top:10px;
+}
+
+.serviceHeader {                
+  	object-fit: contain;
+  	font-family: HelveticaNeue-Bold;
+  	font-size: 20px;
+  	color: #52bdec;
+  	margin-top:10px;
+  	margin-left:10px;
+}
+
 .accountElementsHeader {            
-    font-size: 14px;                   
+    font-size: 12px;                   
     text-align: left;   
     color: #777777;	
     margin-top:10px;
