@@ -61,11 +61,12 @@
 								'<div class="accountElementsHeader">Title: '  + posts[i].title + '</div>' +
 								'<div class="accountElementsHeader">';
 								if (posts[i].date !== "undefined") {
-	                              html += 'Posted: ' + posts[i].date + '<br/>';
+	                              html += 'Date Posted: ' + posts[i].date + '<br/>';
 	                        	}
 	                        
 								html += '</div>' +
-								'<div class="accountElementsHeader">Sale Price: ' + posts[i].price + ' LabCoins' + '</div>' +
+								'<div class="accountElementsHeader">Price: ' + posts[i].price + ' LabCoins' + '</div>' +
+								'<div class="accountElementsHeader">Sold by: ' + posts[i].seller + '</div>' +
 								'<div class="accountElementsHeader">Description:</div>' +
 								'<div class="serviceContentDescription">' + posts[i].description + '</div>' +														
 								'</div>' +						
@@ -108,11 +109,12 @@
 								'<div class="accountElementsHeader">Title: ' + posts[i].title + '</div>' +	
 								'<div class="accountElementsHeader">';
 								if (posts[i].date!== "undefined") {
-	                              html += 'Posted: ' + posts[i].date + '<br/>';
+	                              html += 'Date Posted: ' + posts[i].date + '<br/>';
 	                        	}
 	                        
 								html += '</div>' +
-								'<div class="accountElementsHeader">Sale Price: ' + posts[i].price + 'LabCoins' + '</div>' +
+								'<div class="accountElementsHeader">Price: ' + posts[i].price + ' LabCoins' + '</div>' +
+								'<div class="accountElementsHeader">Purchased by: ' + posts[i].buyer + '</div>' +
 								'<div class="accountElementsHeader">Description:</div>' +
 								'<div class="serviceContentDescription">' + posts[i].description + '</div>' +														
 								'</div>' +						
@@ -238,7 +240,7 @@
 					                        	}
 					                        
 												html += '</div>' +
-												'<div class="accountElementsHeader">Sale Price: ' + posts[i].price + ' LabCoins' + '</div>' +
+												'<div class="accountElementsHeader">Price: ' + posts[i].price + ' LabCoins' + '</div>' +
 												'<div class="accountElementsHeader">Description:</div>' +
 												'<div class="serviceContentDescription">' + posts[i].description + '</div>' +
 												'<div class="jobpostedButtonContainer">';
