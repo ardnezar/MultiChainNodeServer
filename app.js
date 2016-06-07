@@ -40,7 +40,7 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
 app.use(express.static(path.join(__dirname, 'public')));
 
-// development only
+// development 
 if ('development' == app.get('env')) {
   app.use(errorHandler());
 }
