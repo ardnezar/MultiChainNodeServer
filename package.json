@@ -25,6 +25,8 @@
 	"cookie-parser": "^1.0.0",
  	"ejs" : "^0.8.5",
   	"bcrypt-nodejs" : "latest",
-  	"xhr2": "*"   
+  	"xhr2": "*",
+  	"connect-flash": "^0.1.1",
+  	"bson":"^0.4.23"   
   }
 }
