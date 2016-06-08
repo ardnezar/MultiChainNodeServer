@@ -129,13 +129,13 @@ module.exports = function(passport) {
 		    		                 * 
 		    		                 */
 		    		                
-		    		                console.log("Calling validate address");
+		    		                console.log("Calling validate address..addr:"+addr);
 		    		        		var validateClient = require("../lib/accountvalidate");
-		    		                validateClient.validate('', function (err, resp) {
+		    		                validateClient.validate(addr, function (err, resp) {
 		    		                	if(err) {
 		    		                		console.log('Validate client Internal error');
-//		    		                		 return done(null, false, 
-//		    		               	                 req.flash('signupMessage','Internal error in validation of new account. Please try after some time.'));
+		    		                		 return done(null, false, 
+		    		               	                 req.flash('signupMessage','Internal error in validation of new account. Please try after some time.'));
 		    		                	} else {
 		    		                		console.log('Validate client successful');
 		    		                		return done(null, newUser);
