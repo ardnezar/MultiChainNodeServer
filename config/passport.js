@@ -121,8 +121,26 @@ module.exports = function(passport) {
 		    		                  return done(null, false, 
 		    		           	                 req.flash('signupMessage','Internal error in signup. Please try after some time.'));
 		    		                }		    		                		    		                
-		    		                console.log('User Registration successful');    
-		    		                return done(null, newUser);
+		    		                console.log('User Registration successful');
+		    		                
+		    		                
+		    		                
+		    		                /* Call account validate and complete granting rights and initial asset grants
+		    		                 * 
+		    		                 */
+		    		                
+		    		                console.log("Calling validate address");
+		    		        		var validateClient = require("../lib/accountvalidate");
+		    		                validateClient.validate('', function (err, resp) {
+		    		                	if(err) {
+		    		                		console.log('Validate client Internal error');
+//		    		                		 return done(null, false, 
+//		    		               	                 req.flash('signupMessage','Internal error in validation of new account. Please try after some time.'));
+		    		                	} else {
+		    		                		console.log('Validate client successful');
+		    		                		return done(null, newUser);
+		    		                	}
+		    		                });	    		               		    		               		    		                		    		                
 		                		});
 	                		});
 	            		}
