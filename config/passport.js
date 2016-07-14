@@ -75,8 +75,31 @@ module.exports = function(passport) {
 	          
 	            if (user) {
 	              console.log('User already exists');
-	              return done(null, false, 
-	                 req.flash('signupMessage','User already exists.'));
+					var newTempUser = new User();
+					var newPassword = newTempUser.generateHash(password);
+					User.update( {'local.username':username},
+						{
+							local:{
+								password: newPassword,
+								firstname: req.param('firstname'),
+								lastname: req.param('lastname'),
+								phonenumber: req.param('phonenumber'),
+								address: user.local.address,
+								validated: true,
+								balance: user.local.balance,
+								username: username
+							}
+
+						}, function(err, numberAffected, rawResponse) {
+							if(err) {
+								console.log ("Error updating info: " + err);
+								return done(err);
+							} else {
+								console.log ("User already exists, info updated.");
+								return done(null, false,
+									req.flash('signupMessage','User already exists, info updated.'));
+							}
+						});
 	            } else {
 	              // if there is no user with that email
 	              // create the user
