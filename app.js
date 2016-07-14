@@ -67,9 +67,9 @@ var trans = require('./lib/transferasset')
 
 
 var dbConfig = require('./config/database.js');
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose');
 //mongoose.connect('mongodb://localhost/passport');
-mongoose.connect('mongodb://159.203.228.118:27017/passport');
+//mongoose.connect('mongodb://159.203.228.118:27017/passport');
 //require('./config/passport_test')(passport);
 require('./config/passport')(passport);
 
