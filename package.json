@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "forever start app.js",
+    "start": "forever -o nodeOut.log start app.js",
     "stop": "forever stopall"
   },
   "dependencies": {
@@ -19,7 +19,7 @@
     "jade": "*",
     "bluebird": "^3.3.3",
     "mongodb": "^1.4.40",
-    "mongoose": "^3.8.12",
+    "mongoose": "3.8.12",
     "passport": "^0.2.0",
 	"passport-local": "^1.0.0",
 	"cookie-parser": "^1.0.0",
