@@ -86,9 +86,19 @@ require('./routes/route.js')(app, passport);
 
 //app.listen();
 
-app.listen(app.get('port'), function(){
+//app.listen(app.get('port'), function(){
+//  console.log('Express server listening on port ' + app.get('port'));
+//});
+
+const https = require('https');
+const fs = require('fs');
+const options = {
+  pfx: fs.readFileSync('SSLCerts/labs.p12'),
+  passphrase:'E81LYmj8IbvMYSiHFjvQA4xxHZ'
+};
+app.set('port', 443);
+https.createServer(options, app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-
 
 
