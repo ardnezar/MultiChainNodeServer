@@ -16,6 +16,32 @@
     <style>
         body        { padding-top:0px; }
     </style>
+
+<script>
+    function validateForm() {
+        console.log("Start form validation.");
+        var x = document.forms["signupForm"]["username"].value;
+        var atpos = x.indexOf("@");
+        var dotpos = x.lastIndexOf(".");
+        var errorMessageDiv = document.getElementById('errorMessageBox');
+
+        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+            console.log("Form failed.");
+            errorMessageDiv.innerHTML = "Incorrect e-mail format.";
+            return false;
+        } else {
+            //Trim any trailing pre and post spaces before submitting
+            var usernamePreTrim = document.signupForm.username.value;
+            var usernamePostTrim = usernamePreTrim.trim();
+            document.signupForm.username.value = usernamePostTrim;
+            console.log("Form passed.");
+            console.log("username pretrim is: " + usernamePreTrim + ", post trim is: " + usernamePostTrim);
+            errorMessageDiv.innerHTML = "";
+            return true;
+        }
+    }
+</script>
+
 </head>
 <body>
 <div id="diCoinsHeader">
@@ -32,7 +58,7 @@
     <% } %>
 
     <!-- LOGIN FORM -->
-    <form action="/signup" method="post">
+    <form name="signupForm" onsubmit="return validateForm();" action="/signup" method="post">
         <div class="form-group">
             <label>Firstname</label>
             <input type="text" class="form-control" name="firstname">
@@ -53,7 +79,8 @@
             <label>Phone number (to inform you of your sales activity)</label>
             <input type="text" class="form-control" name="phonenumber">
         </div>
-
+	<div style="color: red; font-weight:bold" id="errorMessageBox">
+    	</div>
         <button type="submit" class="btn btn-warning btn-lg">Register</button>
     </form>
 
