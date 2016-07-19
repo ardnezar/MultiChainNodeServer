@@ -104,7 +104,8 @@
 								</div>
 								<div class="accountElementsHeader">
 									<% if (post.postedOn) { %>
-                                          Date Posted: <%= post.postedOn %>
+					  <%postDate = new Date(post.postedOn).toUTCString(); %>
+                                          Date Posted: <%= postDate %>
                                     <% } %>
 								</div>
 								<div class="accountElementsHeader">Description:</div>

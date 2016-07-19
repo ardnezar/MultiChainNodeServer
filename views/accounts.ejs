@@ -61,7 +61,8 @@
 								'<div class="accountElementsHeader">Title: '  + posts[i].title + '</div>' +
 								'<div class="accountElementsHeader">';
 								if (posts[i].date !== "undefined") {
-	                              html += 'Date Posted: ' + posts[i].date + '<br/>';
+				      var postDate = new Date(posts[i].date).toUTCString();
+	                              html += 'Date Posted: ' + postDate + '<br/>';
 	                        	}
 	                        
 								html += '</div>' +
@@ -109,7 +110,8 @@
 								'<div class="accountElementsHeader">Title: ' + posts[i].title + '</div>' +	
 								'<div class="accountElementsHeader">';
 								if (posts[i].date!== "undefined") {
-	                              html += 'Date Posted: ' + posts[i].date + '<br/>';
+				      var postDate = new Date(posts[i].date).toUTCString();
+	                              html += 'Date Posted: ' + postDate + '<br/>';
 	                        	}
 	                        
 								html += '</div>' +
@@ -230,7 +232,8 @@
 												'<div class="accountElementsHeader">Title: '  + posts[i].title  +	'</div>' +
 												'<div class="accountElementsHeader">';
 												if (posts[i].postedOn!== "undefined") {
-					                              html += 'Date Posted: ' + posts[i].postedOn + '<br/>';
+								      var postDate = new Date(posts[i].postedOn).toUTCString();
+					                              html += 'Date Posted: ' + postDate + '<br/>';
 					                        	}
 					                        
 												html += '</div>' +
