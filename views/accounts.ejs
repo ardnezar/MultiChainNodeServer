@@ -194,14 +194,18 @@
 					   	</font>
 					   	</strong>
 					</div>
-                    <div class="accountElementsHeader"> Blockchain Public Key: 
+                    <div class="accountElementsHeader"> Multichain Blockchain address: 
 	                    
 	                    <% if (!user.local.address) { %>
 					        {} <br>
 					    <% } else { %> <%= user.local.address %> <br>
 					    
 				       	<% } %>
-			       	</div>	
+			       	</div>
+			<div> 
+				<%addressDetailsLink = 'http://coins.labs.digitalinsight.com:2750/MultiChain%20Labcoins/address/' + user.local.address.replace(/"/g, ''); %>
+				<a target="explorerAddressDetails" href="<%= addressDetailsLink %>"> Blockchain address transactions history</a>
+			</div>	
 	                <hr/>
 	                <div id="detailedcontent"></div>	                               	
                 	
