@@ -63,7 +63,7 @@
 						   <% } %> LabCoins !!!
 				   	</font>
 					
-					<p/><p/>Click <a target='explorerHome' href="http://coins.labs.digitalinsight.com:2750">here</a> to see details of the LabCoins blockchain! <p/>
+					<p/><p/>Click <a href="http://coins.labs.digitalinsight.com:80">here</a> to see details of the LabCoins blockchain! <p/>
 				   	</div>
 				</div>
 			</div>
@@ -178,9 +178,9 @@
 							           	   '</div>';
 							        if(typeof objs[r].txId !== "undefined") {
 							        	//var actionUrl = "/transactionsforid?id="+objs[r]._id;
-							        	var actionUrl = "http://coins.labs.digitalinsight.com:2750/MultiChain%20Labcoins/tx/" + objs[r].txId.toString();
+							        	var actionUrl = "http://coins.labs.digitalinsight.com:80/MultiChain%20Labcoins/tx/" + objs[r].txId.toString();
 									html += '<div class="activityFeedContent">'+							        	
-							        	   '<a target="explorerTxDetails" href="' + actionUrl + '">' +
+							        	   '<a href="' + actionUrl + '">' +
 							               '<b>' + 'Transaction: ' + '</b>' +
 							                objs[r].txId.toString() + '</a>' +
 							           	   '</div>'; 
