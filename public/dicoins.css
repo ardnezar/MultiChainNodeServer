@@ -125,7 +125,7 @@ body {
     width: 70%;
     flex-direction: column;      
     margin-left:10px;
-    border-style: solid;
+    /*border-style: solid;*/
     border-width: 1px;
     border-color: #efefef;            
 }
@@ -134,7 +134,7 @@ body {
     -webkit-flex-direction: column;
     width: 30%;
     flex-direction: column;          
-    border-style: solid;
+    border-left-style: solid;
     border-width: 1px;
     border-color: #efefef;
     margin-left :1px;              
@@ -342,4 +342,19 @@ body {
     background-color: #ffa91b;  
     height: 40px;     
     text-align: center;
+}
+
+.userWelcome {
+    background-color:#36A7D9;
+    font-family: 'Helvetica Neue';
+    font-size: 16px;
+    color:#fff;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.userWelcomeContent {
+    margin-left: 30px;
+    margin-right: 30px;
 }

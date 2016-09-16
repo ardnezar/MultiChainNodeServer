@@ -58,27 +58,48 @@
 <body>
 <div id="diCoinsHeader">
 </div>
+<div id="userWelcome">
+	<div class="userWelcome">
+		<div class="userWelcomeContent">
+			<p style="float: left"> 
+				Welcome <%= user.local.firstname %>, You have
+                                        <font color="#D0FF9B">
+                                <% if (user.local.balance) { %>
+                                                        <%= user.local.balance %>
+                                                    <% } else {%>
+                                                        0
+                                                   <% } %> LabCoins !!!
+                                        </font>
+			</p>
+			<p style = "float: right">
+				Press Ctrl-F / Cmd F to search	
+			</p>
+			<div style="clear: both;"></div>
+		</div>
+
+	</div>
+</div>
 	<div class="container">
 		<div class="grid">
 			<div class="row">
 				<div class="col-md-9 col-sm-12">
 					<div class="joblistingsbalanceHeaders">			
-					Welcome <%= user.local.firstname %>, You have 
+					<!-- Welcome <%= user.local.firstname %>, You have 
 					<font color="green"> 
 	        		<% if (user.local.balance) { %>
 						        <%= user.local.balance %>
 						    <% } else {%>
 						    	0
 						   <% } %> LabCoins !!!
-				   	</font>
+				   	</font> -->
 					
-					<p/><p/>Click <a target="_blank" href="http://coins.labs.digitalinsight.com:80">here</a> to see details of the LabCoins blockchain! <p/>
+					<!--<p/><p/>Click <a target="_blank" href="http://coins.labs.digitalinsight.com:80">here</a> to see details of the LabCoins blockchain! <p/> -->
 				   	</div>
 				</div>
 			</div>
 		</div>
 		
-		<hr/>
+		<!--<hr/>-->
 		
 	    <!-- show any messages that come back with authentication -->
 	    <% if (message.length > 0 && messageType <= 0 ) { %>
